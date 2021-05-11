@@ -30,6 +30,9 @@ export default {
   display: flex;
   flex-flow: row;
   width: 25vw;
+  @media (max-width: 500px) {
+    width: 50vw;
+  }
   max-width: 375px;
   .shape{
     width: 20%;

@@ -97,7 +97,6 @@ export default {
     }
 
     .difficulty-setting_wrapper {
-      font-size: 200%;
       display: flex;
       flex-flow: row;
       margin-top: 10px;
@@ -112,6 +111,22 @@ export default {
         margin: auto;
       }
     }
+
+    @media (max-width: 700px) {
+      flex-flow: row;
+      .difficulty_text{
+        font-size: 150%;
+      }
+      .difficulty-setting_wrapper{
+        font-size: 100%;
+        margin-left: 5px;
+        margin-top: 2px;
+        .difficulty-level {
+          margin: auto;
+          font-size: 30px;
+        }
+      }
+    }
   }
 
   .buttons_wrapper {
@@ -122,6 +137,15 @@ export default {
       width: 30%;
       max-width: 300px;
       font-size: 200%;
+    }
+    @media (max-width: 700px) {
+      display: flex;
+      flex-flow: column;
+
+      button{
+        width: 70%;
+        margin: 20px auto;
+      }
     }
   }
 

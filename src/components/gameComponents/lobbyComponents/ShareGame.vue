@@ -35,6 +35,7 @@ export default {
       width: fit-content;
       font-size: 20px;
       user-select: none;
+
     }
 
     .copy-url {
@@ -56,9 +57,24 @@ export default {
 
     &:active{
       .copy-url{
-        //background-image: url("../../../assets/copyLight.png");
         transition: transform 0s;
         transform: scale(1.1);
+      }
+    }
+
+    @media (max-width: 700px) {
+      width: 80%;
+      margin-left: 5%;
+      .share-link_url{
+        font-size: 15px;
+        width: 100%;
+        overflow: hidden;
+      }
+      .copy-url{
+        width: 20px;
+        height: 20px;
+        padding-left: 5px;
+        background-color: white;
       }
     }
   }

@@ -28,6 +28,9 @@ export default {
 <style scoped lang="scss">
 .colors_wrapper{
   height: 25vw;
+  @media (max-width: 500px) {
+    height: 50vw;
+  }
   max-height: 375px;
   display: flex;
   width: fit-content;

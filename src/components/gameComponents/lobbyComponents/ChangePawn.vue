@@ -1,5 +1,6 @@
 <template>
   <div class="change-pawn_wrapper">
+    <div class="close_image"><img src="@/assets/close.jpg" alt="" @click="$emit('close')"></div>
     <div class="change-pawn_container">
       <Shapes :selected="selectedShape" :available="availableShapes" @shape="selectedShape=$event"></Shapes>
       <div class="preview-and-color_wrapper">
@@ -122,7 +123,9 @@ export default {
   top: 10%;
   left: 30%;
   z-index: 5;
-
+  .close_image{
+    display: none;
+  }
   .change-pawn_container{
     width: fit-content;
     height: fit-content;
@@ -133,6 +136,30 @@ export default {
     }
     button{
       margin-top: 5%;
+    }
+  }
+
+
+  @media (max-width: 700px) {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    .change-pawn_container{
+      margin-top: 50px;
+    }
+   .close_image{
+      display: flex;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      img{
+        width: 100%;
+      }
+
     }
   }
 }

@@ -22,6 +22,9 @@ export default {
 <style scoped lang="scss">
 .preview_wrapper{
   width: 25vw;
+  @media (max-width: 500px) {
+    width: 50vw;
+  }
   max-width: 375px;
   height: fit-content;
   user-select: none;
