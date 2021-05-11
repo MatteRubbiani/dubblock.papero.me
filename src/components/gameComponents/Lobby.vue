@@ -40,7 +40,10 @@ export default {
   data(){
     return {
       game: {
-        players: []
+        players: [],
+        settings: {
+          difficulty: 0
+        }
       },
       showChangePawn: false
     }
