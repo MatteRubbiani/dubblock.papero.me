@@ -6,7 +6,7 @@
         <Preview :shape="selectedShape" :color="selectedColor"></Preview>
         <Colors :selected="selectedColor" :available="availableColors" @color="selectedColor=$event"></Colors>
       </div>
-      <button class="change-pawn_button">Confirm</button>
+      <button class="change-pawn_button" @click="changePawn">Confirm</button>
     </div>
   </div>
 </template>
@@ -15,13 +15,15 @@
 import Preview from "./ChangePawnComponents/Preview";
 import Shapes from "./ChangePawnComponents/Shapes";
 import Colors from "./ChangePawnComponents/Colors";
+import websocketEvents from "../../../constants/websocketEvents";
 
 export default {
   name: "ChangePawn",
   components: {Colors, Shapes, Preview},
   props: {
     players: Array,
-    localId: Number
+    localId: Number,
+    socket: Object
   },
   data() {
     return {
@@ -29,7 +31,15 @@ export default {
       selectedColor: 0
     }
   },
-  methods: {},
+  methods: {
+    changePawn: function(){
+      this.socket.emit(websocketEvents.CHANGE_PAWN,
+          {
+            shape: this.selectedShape,
+            color: this.selectedColor
+          })
+    }
+  },
   computed: {
     taken: function () {
       let t = []
