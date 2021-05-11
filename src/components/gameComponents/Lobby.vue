@@ -80,6 +80,7 @@ export default {
   margin: auto;
   max-width: 1500px;
   height: 100%;
+  overflow: hidden;
 
   .lobby-header_wrapper {
     font-size: 400%;
@@ -157,6 +158,9 @@ export default {
     left: 0;
     background-color: #cbcbcb;
     opacity: .9;
+    @media (max-width: 500px) {
+      opacity: 1;
+    }
 
   }
 }
