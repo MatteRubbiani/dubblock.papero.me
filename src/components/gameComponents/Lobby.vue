@@ -15,7 +15,7 @@
   <Players :players="game.players" :localId="game.localId" @changePawn="showChangePawn=true"></Players>
 
   <div class="buttons_wrapper">
-    <button class="join" v-if="game.localId === null">Join</button>
+    <button class="join" v-if="game.localId === null" @click="join">Join</button>
     <button class="change_pawn" v-if="game.localId !== null" @click="showChangePawn=true">Change Pawn</button>
     <button class="quit" v-if="game.localId !== null" @click="quit">Quit</button>
     <button class="start" v-if="game.localId !== null && isAdmin">Start</button>
@@ -60,6 +60,9 @@ export default {
   methods: {
     quit: function (){
       this.socket.emit(websocketEvents.QUIT_GAME)
+    },
+    join: function (){
+      this.socket.emit(websocketEvents.JOIN_GAME)
     }
   },
   mounted() {
