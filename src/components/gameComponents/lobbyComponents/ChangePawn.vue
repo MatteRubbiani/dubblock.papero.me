@@ -6,7 +6,7 @@
         <Preview :shape="selectedShape" :color="selectedColor"></Preview>
         <Colors :selected="selectedColor" :available="availableColors" @color="selectedColor=$event"></Colors>
       </div>
-      <button class="change-pawn_button" @click="changePawn">Confirm</button>
+      <button class="change-pawn_button" v-if="socket" @click="changePawn">Confirm</button>
     </div>
   </div>
 </template>
