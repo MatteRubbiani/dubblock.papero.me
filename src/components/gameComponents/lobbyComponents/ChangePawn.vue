@@ -38,6 +38,7 @@ export default {
             shape: this.selectedShape,
             color: this.selectedColor
           })
+      this.$emit('close')
     }
   },
   computed: {
