@@ -147,7 +147,7 @@ export default {
     left: 0;
     overflow: hidden;
     .change-pawn_container{
-      margin-top: 50px;
+      margin-top: 100px;
     }
    .close_image{
       display: flex;
