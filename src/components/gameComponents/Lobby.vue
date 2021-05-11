@@ -21,7 +21,7 @@
     <button class="start" v-if="game.localId !== null && isAdmin">Start</button>
   </div>
   <div class="change-pawn_background" @click="showChangePawn=false" v-if="showChangePawn"></div>
-  <ChangePawn :players="game.players" :localId="game.localId" :socket="socket" v-if="showChangePawn && socket"></ChangePawn>
+  <ChangePawn :players="game.players" :localId="game.localId" :socket="socket" v-if="showChangePawn && socket" @close="showChangePawn=false"></ChangePawn>
 </div>
 </template>
 
