@@ -2,14 +2,14 @@ let baseUrl = "https://papero.me";
 const urls = {
     baseUrl: "https://papero.me",
     socketPath: "/dubblock/socket.io",
-    getLoginInfoUrl: baseUrl+"/user/get_info",
-    createLocalAccountUrl: baseUrl+"/auth/local",
-    logoutUrl: baseUrl+"/auth/logout",
+    getLoginInfoUrl: baseUrl + "/user/get_info",
+    createLocalAccountUrl: baseUrl + "/auth/local",
+    logoutUrl: baseUrl + "/auth/logout",
 }
 
 const game = {
     localId: 1,
-        settings: {
+    settings: {
         difficulty: 2
     },
     players: [
