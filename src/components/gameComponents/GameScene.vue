@@ -1,10 +1,10 @@
 <template>
-$END$
+<div>Game scene</div>
 </template>
 
 <script>
 export default {
-name: "GameScene"
+  name: "GameScene"
 }
 </script>
 

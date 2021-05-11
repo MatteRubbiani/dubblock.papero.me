@@ -1,13 +1,27 @@
 <template>
-$END$
+<div class="players_wrapper">
+<Player v-for="i in players" :key="i.localId" :you="i.localId===localId" :admin="i.admin" :color="i.color" :username="i.username" :shape="i.shape" @changePawn="$emit('changePawn')"></Player>
+</div>
 </template>
 
 <script>
+import Player from "./Player";
 export default {
-name: "Players"
+  name: "Players",
+  components: {Player},
+  props: {
+    players: Array,
+    localId: Number
+  }
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.players_wrapper{
+  height: fit-content;
+  display: flex;
+  flex-flow: row;
+  width: fit-content;
+  margin: 10vh auto;
+}
 </style>

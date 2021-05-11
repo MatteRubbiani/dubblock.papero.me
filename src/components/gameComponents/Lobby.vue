@@ -1,13 +1,122 @@
 <template>
-$END$
+<div class="lobby_wrapper">
+  <div class="lobby-header_wrapper">Dubblock</div>
+
+  <div class="settings_wrapper">
+    <p class="difficulty_text">Difficulty: </p>
+    <div class="difficulty-setting_wrapper">
+      <img src="@/assets/upArrow.png" alt="" v-if="isAdmin">
+      <div class="difficulty-level">{{game.settings.difficulty}}</div>
+      <img src="@/assets/downArrow.png" alt="" v-if="isAdmin">
+    </div>
+  </div>
+
+  <ShareGame></ShareGame>
+  <Players :players="game.players" :localId="game.localId" @changePawn="showChangePawn=true"></Players>
+
+  <div class="buttons_wrapper">
+    <button class="join" v-if="game.localId === null">Join</button>
+    <button class="change_pawn" v-if="game.localId !== null" @click="showChangePawn=true">Change Pawn</button>
+    <button class="quit" v-if="game.localId !== null">Quit</button>
+    <button class="start" v-if="game.localId !== null && isAdmin">Start</button>
+  </div>
+  <div class="change-pawn_background" @click="showChangePawn=false" v-if="showChangePawn"></div>
+  <ChangePawn :players="game.players" :localId="game.localId" v-if="showChangePawn"></ChangePawn>
+</div>
 </template>
 
 <script>
+import ShareGame from "./lobbyComponents/ShareGame";
+import Players from "./lobbyComponents/Players";
+import ChangePawn from "./lobbyComponents/ChangePawn";
 export default {
-name: "Lobby"
+  name: "Lobby",
+  components: {ChangePawn, Players, ShareGame},
+  props: {
+    gameId: String,
+    socket: Object,
+    game: Object
+  },
+  data(){
+    return {
+      showChangePawn: false
+    }
+  },
+  computed: {
+    isAdmin: function (){
+      let a = false
+      this.game.players.forEach(p => {
+        if (p.admin && p.localId === this.game.localId) a = true
+      })
+      return a
+    }
+  },
+  mounted() {
+    //this.socket.on(websocketEvents.)
+  }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.lobby_wrapper {
+  width: 100%;
+  margin: auto;
+  max-width: 1500px;
+  height: 100%;
 
+  .lobby-header_wrapper {
+    font-size: 400%;
+  }
+
+  .settings_wrapper {
+    width: fit-content;
+    display: flex;
+    flex-flow: column;
+    margin: auto;
+
+    .difficulty_text {
+      font-size: 200%;
+      margin: auto;
+    }
+
+    .difficulty-setting_wrapper {
+      font-size: 200%;
+      display: flex;
+      flex-flow: row;
+      margin-top: 10px;
+
+      .difficulty-level {
+        margin: auto;
+        font-size: 50px;
+      }
+
+      img {
+        height: 40px;
+        margin: auto;
+      }
+    }
+  }
+
+  .buttons_wrapper {
+    width: 100%;
+    float: bottom;
+
+    button {
+      width: 30%;
+      max-width: 300px;
+      font-size: 200%;
+    }
+  }
+
+  .change-pawn_background {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #cbcbcb;
+    opacity: .9;
+
+  }
+}
 </style>
