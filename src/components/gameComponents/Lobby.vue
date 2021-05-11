@@ -59,6 +59,7 @@ export default {
   },
   mounted() {
     this.socket.on(websocketEvents.LOBBY_MODIFIED, (game)=>{
+      console.log("event: ", game)
       this.game = {...game};
     });
   }
