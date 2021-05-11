@@ -2,7 +2,7 @@
   <UserHamburgerMenu :show="showHamburgerMenu"
                    :src="require('@/assets/hamburger_icon_dark.png')"
                    @toggle-show="showHamburgerMenu=$event"/>
-  <Lobby v-if="status === 0" :gameId="gameId" :socket="socket" :game="game"></Lobby>
+  <Lobby v-if="status === 0 && socket" :gameId="gameId" :socket="socket" :game="game"></Lobby>
   <GameScene v-if="status === 1"></GameScene>
 </template>
 
