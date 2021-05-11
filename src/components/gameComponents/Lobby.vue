@@ -17,7 +17,7 @@
   <div class="buttons_wrapper">
     <button class="join" v-if="game.localId === null">Join</button>
     <button class="change_pawn" v-if="game.localId !== null" @click="showChangePawn=true">Change Pawn</button>
-    <button class="quit" v-if="game.localId !== null">Quit</button>
+    <button class="quit" v-if="game.localId !== null" @click="quit">Quit</button>
     <button class="start" v-if="game.localId !== null && isAdmin">Start</button>
   </div>
   <div class="change-pawn_background" @click="showChangePawn=false" v-if="showChangePawn"></div>
@@ -55,6 +55,11 @@ export default {
         if (p.admin && p.localId === this.game.localId) a = true
       })
       return a
+    }
+  },
+  methods: {
+    quit: function (){
+      this.socket.emit(websocketEvents.QUIT_GAME)
     }
   },
   mounted() {
