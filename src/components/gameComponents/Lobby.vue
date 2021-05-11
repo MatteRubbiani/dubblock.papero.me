@@ -160,6 +160,7 @@ export default {
     opacity: .9;
     @media (max-width: 500px) {
       opacity: 1;
+      background-color: white;
     }
 
   }
