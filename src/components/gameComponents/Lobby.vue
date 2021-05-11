@@ -52,6 +52,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.game)
     //this.socket.on(websocketEvents.)
   }
 }
