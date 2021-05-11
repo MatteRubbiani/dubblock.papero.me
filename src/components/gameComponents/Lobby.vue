@@ -29,16 +29,19 @@
 import ShareGame from "./lobbyComponents/ShareGame";
 import Players from "./lobbyComponents/Players";
 import ChangePawn from "./lobbyComponents/ChangePawn";
+import websocketEvents from "../../constants/websocketEvents";
 export default {
   name: "Lobby",
   components: {ChangePawn, Players, ShareGame},
   props: {
     gameId: String,
     socket: Object,
-    game: Object
   },
   data(){
     return {
+      game: {
+        players: []
+      },
       showChangePawn: false
     }
   },
@@ -52,8 +55,9 @@ export default {
     }
   },
   mounted() {
-    console.log(this.game)
-    //this.socket.on(websocketEvents.)
+    this.socket.on(websocketEvents.LOBBY_MODIFIED, (game)=>{
+      this.game = {...game};
+    });
   }
 }
 </script>
