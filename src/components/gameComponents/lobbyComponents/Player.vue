@@ -6,10 +6,8 @@
     <div class="username_wrapper" :class="{'you': you}">
       <div class="username_wrapper">
         <p class="username">{{ username }}</p>
-        <div class="admin_image-wrapper" v-if="admin"><img src="@/assets/admin.png" alt=""></div>
       </div>
-      
-      <p class="admin" v-if="admin">Admin</p>
+      <div class="admin_image-wrapper" v-if="admin"><img src="@/assets/admin.png" alt=""></div>
     </div>
   </div>
 </template>
@@ -63,33 +61,31 @@ export default {
     text-align: center;
     display: flex;
     flex-flow: column;
+
     &.you {
       font-weight: bold;
     }
-    .username_wrapper{
+
+    .username_wrapper {
       width: 100%;
       display: flex;
       flex-flow: row;
-      .username{
-        width: 80%;
-        text-align: left;
+
+      .username {
+        width: 100%;
+        text-align: center;
       }
-      .admin_image-wrapper{
-        width: 30px;
-        height: 30px;
-      }
-      img{
+    }
+
+    .admin_image-wrapper {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      img {
         width: 100%;
       }
-
-    }
-    .admin{
-      color: red;
-      margin: 0;
-      position: absolute;
-      top: 10px;
-      width: 100%;
-      text-align: center;
     }
   }
 
