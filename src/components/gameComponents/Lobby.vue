@@ -99,6 +99,7 @@ export default {
   height: 100%;
   overflow: hidden;
   background-color: white;
+  position: relative;
 
   .enter_full_screen{
     height: 40px;
@@ -162,6 +163,7 @@ export default {
 
   .buttons_wrapper {
     width: 100%;
+    max-width: 1500px;
     position: absolute;
     bottom: 2%;
     height: fit-content;
