@@ -82,7 +82,7 @@ export default {
       height: 30px;
       position: absolute;
       top: -5px;
-      right: 13.5%;
+      right: 10%;
       img {
         width: 100%;
       }
