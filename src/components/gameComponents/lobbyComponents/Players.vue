@@ -24,6 +24,9 @@ export default {
   width: fit-content;
   margin: 10vh auto;
   @media (max-width: 850px) {
+    @media (orientation: portrait) {
+      margin-top: 15vh;
+    }
     margin: auto;
   }
 }
