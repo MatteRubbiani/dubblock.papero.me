@@ -160,6 +160,8 @@ export default {
     width: 100%;
     position: absolute;
     bottom: 2%;
+    height: fit-content;
+    background-color: white;
 
     button {
       width: 30%;
