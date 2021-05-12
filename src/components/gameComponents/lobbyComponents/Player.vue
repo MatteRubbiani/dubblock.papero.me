@@ -40,6 +40,10 @@ export default {
   @media (max-width: 850px) {
     height: 15vw;
     width: 15vw;
+    @media (orientation: portrait) {
+      height: 40vw;
+      width: 40vw;
+    }
   }
 
   .player_pawn {
