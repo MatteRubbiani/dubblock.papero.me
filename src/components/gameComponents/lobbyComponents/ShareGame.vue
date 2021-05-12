@@ -28,7 +28,13 @@ export default {
     cursor: pointer;
     width: fit-content;
     float: right;
-    margin-right: 10%;
+    margin-right: 3%;
+    @media (max-width: 850px) {
+      position: absolute;
+      top: 60px;
+      right: 15px;
+      margin: 0;
+    }
 
     .share-link_url {
       padding: 0 2% 0 2%;
@@ -62,19 +68,14 @@ export default {
       }
     }
 
-    @media (max-width: 700px) {
-      width: 80%;
-      margin-left: 5%;
+    @media (max-width: 850px) {
       .share-link_url{
-        font-size: 15px;
-        width: 100%;
-        overflow: hidden;
+        display: none;
       }
       .copy-url{
-        width: 20px;
-        height: 20px;
+        width: 30px;
+        height: 30px;
         padding-left: 5px;
-        background-color: white;
       }
     }
   }

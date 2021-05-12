@@ -1,7 +1,8 @@
 <template>
-<div class="lobby_wrapper">
-  <div class="rotate">
-    <p>Rotate your phone please</p>
+<div class="lobby_wrapper" id="lobby_wrapper">
+  <div class="enter_full_screen" @click="changeFullScreen">
+    <img src="@/assets/fullScreen.png" alt="" v-if="!fullScreen">
+    <img src="@/assets/exitFullScreen.png" alt="" v-if="fullScreen">
   </div>
   <div class="lobby-header_wrapper">Dubblock</div>
   <div class="settings_wrapper">
@@ -47,7 +48,8 @@ export default {
           difficulty: 0
         }
       },
-      showChangePawn: false
+      showChangePawn: false,
+      fullScreen: false
     }
   },
   computed: {
@@ -66,10 +68,17 @@ export default {
     },
     join: function (){
       this.socket.emit(websocketEvents.JOIN_GAME)
+    },
+    changeFullScreen: function (){
+      if (!this.fullScreen){
+        document.getElementById("app").requestFullscreen()
+      }else{
+        document.exitFullscreen()
+      }
+      this.fullScreen = !this.fullScreen
     }
   },
   mounted() {
-    screen.orientation.lock();
     this.socket.on(websocketEvents.LOBBY_MODIFIED, (game)=>{
       console.log("event: ", game)
       this.game = game;
@@ -85,21 +94,17 @@ export default {
   max-width: 1500px;
   height: 100%;
   overflow: hidden;
-  .rotate{
-    display: none;
-    @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape){
-      display: flex;
-      position: absolute;
+  background-color: white;
+
+  .enter_full_screen{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    img{
       width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-color: black;
-      z-index: 6;
-      p{
-        color: white;
-        margin: auto;
-      }
     }
   }
 
@@ -114,7 +119,7 @@ export default {
     margin: auto;
 
     .difficulty_text {
-      font-size: 200%;
+      font-size: 170%;
       margin: auto;
     }
 
@@ -125,7 +130,7 @@ export default {
 
       .difficulty-level {
         margin: auto;
-        font-size: 50px;
+        font-size: 40px;
       }
 
       img {
@@ -159,15 +164,14 @@ export default {
     button {
       width: 30%;
       max-width: 300px;
-      font-size: 200%;
+      font-size: 150%;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 500px) {
       display: flex;
       flex-flow: column;
-
       button{
         width: 70%;
-        margin: 20px auto;
+        margin: 1% auto;
       }
     }
   }

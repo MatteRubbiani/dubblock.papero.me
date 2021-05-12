@@ -23,5 +23,9 @@ export default {
   flex-flow: row;
   width: fit-content;
   margin: 10vh auto;
+  @media (max-width: 850px) {
+    width: 100%;
+    margin-top: 0;
+  }
 }
 </style>
