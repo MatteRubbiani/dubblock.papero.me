@@ -1,20 +1,20 @@
 <template>
-<div class="home_wrapper">
-  <UserHamburgerMenu :show="showHamburgerMenu"
-                     :src="require('@/assets/hamburger_icon_dark.png')"
-                     @toggle-show="showHamburgerMenu=$event"/>
-  <div class="home-header_wrapper">
-    <div class="home-header-title_wrapper">
-      Dubblock
+  <div class="home_wrapper">
+    <UserHamburgerMenu :show="showHamburgerMenu"
+                       :src="require('@/assets/hamburger_icon_dark.png')"
+                       @toggle-show="showHamburgerMenu=$event"/>
+    <div class="home-header_wrapper">
+      <div class="home-header-title_wrapper">
+        Dubblock
+      </div>
     </div>
-  </div>
 
-  <div class="home-content_wrapper">
-    <input :placeholder="'insert lobby name'" id="input">
-    <button class="go-button" @click="letsGo" id="go-button">Let's go</button>
-  </div>
+    <div class="home-content_wrapper">
+      <input :placeholder="'insert lobby name'" id="input">
+      <button class="go-button" @click="letsGo" id="go-button">Let's go</button>
+    </div>
 
-</div>
+  </div>
 </template>
 
 <script>
@@ -22,6 +22,7 @@ import {urls} from "../constants/constants";
 import axios from "axios";
 import store from "../store";
 import UserHamburgerMenu from "../components/UserHamburgerMenu";
+
 export default {
   name: "Home",
   components: {UserHamburgerMenu},
@@ -31,25 +32,31 @@ export default {
     }
   },
   methods: {
-    letsGo: function (){
+    letsGo: function () {
       let content = document.getElementById("input").value
       if (!content) content = null
-      if (content){
+      if (content) {
         window.location.href = content;
+      } else {
+        axios.get(urls.newId)
+            .then(response => {
+              if (response.data) {
+                window.location.href = response.data;
+              }
+            })
       }
-
     }
   },
   mounted() {
     let input = document.getElementById("input")
-    input.addEventListener("keyup", function(event) {
+    input.addEventListener("keyup", function (event) {
       if (event.keyCode === 13) {
         event.preventDefault();
         document.getElementById("go-button").click();
       }
     });
   },
-  beforeRouteEnter(to, from, next){
+  beforeRouteEnter(to, from, next) {
     if (store.state.logged === -1 || store.state.username === "") {
       axios.get(urls.getLoginInfoUrl)
           .then(response => {
@@ -72,15 +79,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.home_wrapper{
-  .home-header_wrapper{
-    .home-header-title_wrapper{
+.home_wrapper {
+  .home-header_wrapper {
+    .home-header-title_wrapper {
       font-size: 300%;
       margin-top: 20px;
     }
   }
 
-  .home-content_wrapper{
+  .home-content_wrapper {
     display: flex;
     flex-flow: column;
     width: fit-content;
@@ -88,11 +95,12 @@ export default {
     @media (max-width: 700px) {
       width: 90%;
     }
-    button{
+
+    button {
       margin-top: 40px;
     }
 
-    input{
+    input {
       background: none;
       outline: none;
       border: none;
@@ -101,11 +109,12 @@ export default {
       text-align: center;
       color: black;
       margin: auto;
-      @media (max-width: 700px){
+      @media (max-width: 700px) {
         width: 80%;
       }
       transition: all .5s;
-      &:focus{
+
+      &:focus {
         border-bottom-color: black;
       }
     }
