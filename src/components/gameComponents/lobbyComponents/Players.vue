@@ -27,8 +27,8 @@ export default {
     @media (orientation: portrait) {
       margin-top: 10vh;
       display: grid;
-      grid-template-columns: 40vw 40vw;
-      grid-auto-rows: 40vw 40vw 40vw;
+      grid-template-columns: 30vw 30vw;
+      grid-auto-rows: 30vw 30vw 30vw;
 
     }
     margin: auto;
