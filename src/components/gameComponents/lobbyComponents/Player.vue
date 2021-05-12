@@ -4,7 +4,11 @@
       <img :src="imageUrl" alt="">
     </div>
     <div class="username_wrapper" :class="{'you': you}">
-      <p class="username">{{ username }}</p>
+      <div class="username_wrapper">
+        <p class="username">{{ username }}</p>
+        <img src="@/assets/admin.png" alt="" v-if="admin">
+      </div>
+      
       <p class="admin" v-if="admin">Admin</p>
     </div>
   </div>
@@ -62,9 +66,18 @@ export default {
     &.you {
       font-weight: bold;
     }
-    .username{
+    .username_wrapper{
       width: 100%;
-      text-align: center;
+      display: flex;
+      flex-flow: row;
+      .username{
+        width: 80%;
+        text-align: left;
+      }
+      img{
+        width: 20%;
+      }
+
     }
     .admin{
       color: red;
