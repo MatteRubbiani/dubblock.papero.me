@@ -54,12 +54,11 @@ export default {
   },
   computed: {
     isAdmin: function (){
-      return true
-      /*let a = false
+      let a = false
       this.game.players.forEach(p => {
         if (p.admin && p.localId === this.game.localId) a = true
       })
-      return a*/
+      return a
     }
   },
   methods: {
