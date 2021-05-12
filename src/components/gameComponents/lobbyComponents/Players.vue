@@ -26,6 +26,7 @@ export default {
   @media (max-width: 850px) {
     @media (orientation: portrait) {
       margin-top: 10vh;
+      page-break-after: always;
     }
     margin: auto;
   }
