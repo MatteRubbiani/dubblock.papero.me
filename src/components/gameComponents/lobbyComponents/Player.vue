@@ -37,6 +37,10 @@ export default {
   width: 150px;
   display: flex;
   flex-flow: column;
+  @media (max-width: 850px) {
+    height: 15vw;
+    width: 15vw;
+  }
 
   .player_pawn {
     img {

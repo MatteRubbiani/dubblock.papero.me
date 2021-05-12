@@ -73,10 +73,8 @@ export default {
       if (!this.fullScreen){
         let el = document.getElementById("app")
         el.requestFullscreen()
-        el.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
       }else{
         document.exitFullscreen()
-        document.webkitCancelFullScreen();
       }
       this.fullScreen = !this.fullScreen
     }
