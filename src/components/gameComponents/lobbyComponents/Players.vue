@@ -25,7 +25,7 @@ export default {
   margin: 10vh auto;
   @media (max-width: 850px) {
     @media (orientation: portrait) {
-      margin-top: 10vh;
+      margin-top: 5vh;
       display: grid;
       grid-template-columns: 30vw 30vw;
       grid-auto-rows: 30vw 30vw 30vw;
