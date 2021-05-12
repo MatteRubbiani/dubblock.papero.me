@@ -6,7 +6,7 @@
     <div class="username_wrapper" :class="{'you': you}">
       <div class="username_wrapper">
         <p class="username">{{ username }}</p>
-        <img src="@/assets/admin.png" alt="" v-if="admin">
+        <div class="admin_image-wrapper" v-if="admin"><img src="@/assets/admin.png" alt=""></div>
       </div>
       
       <p class="admin" v-if="admin">Admin</p>
@@ -74,8 +74,12 @@ export default {
         width: 80%;
         text-align: left;
       }
+      .admin_image-wrapper{
+        width: 30px;
+        height: 30px;
+      }
       img{
-        width: 20%;
+        width: 100%;
       }
 
     }
