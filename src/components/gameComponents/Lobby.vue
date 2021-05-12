@@ -50,11 +50,12 @@ export default {
   },
   computed: {
     isAdmin: function (){
-      let a = false
+      return true
+      /*let a = false
       this.game.players.forEach(p => {
         if (p.admin && p.localId === this.game.localId) a = true
       })
-      return a
+      return a*/
     }
   },
   methods: {
@@ -66,6 +67,7 @@ export default {
     }
   },
   mounted() {
+    screen.orientation.lock();
     this.socket.on(websocketEvents.LOBBY_MODIFIED, (game)=>{
       console.log("event: ", game)
       this.game = game;
@@ -89,7 +91,7 @@ export default {
   .settings_wrapper {
     width: fit-content;
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
     margin: auto;
 
     .difficulty_text {
@@ -100,7 +102,7 @@ export default {
     .difficulty-setting_wrapper {
       display: flex;
       flex-flow: row;
-      margin-top: 10px;
+      margin-top: 5px;
 
       .difficulty-level {
         margin: auto;
@@ -132,7 +134,8 @@ export default {
 
   .buttons_wrapper {
     width: 100%;
-    float: bottom;
+    position: absolute;
+    bottom: 2%;
 
     button {
       width: 30%;
