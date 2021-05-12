@@ -85,6 +85,12 @@ export default {
   overflow: hidden;
   @media (orientation: landscape) {
     transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
   }
 
   .lobby-header_wrapper {
