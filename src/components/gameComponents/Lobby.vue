@@ -83,6 +83,9 @@ export default {
   max-width: 1500px;
   height: 100%;
   overflow: hidden;
+  @media (orientation: landscape) {
+    transform: rotate(-90deg);
+  }
 
   .lobby-header_wrapper {
     font-size: 400%;
