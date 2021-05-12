@@ -10,8 +10,8 @@
   </div>
 
   <div class="home-content_wrapper">
-    <input :placeholder="'insert lobby name'">
-    <button class="go-button">Let's go</button>
+    <input :placeholder="'insert lobby name'" id="input">
+    <button class="go-button" @click="letsGo" id="go-button">Let's go</button>
   </div>
 
 </div>
@@ -31,7 +31,23 @@ export default {
     }
   },
   methods: {
+    letsGo: function (){
+      let content = document.getElementById("input").value
+      if (!content) content = null
+      if (content){
+        window.location.href = content;
+      }
 
+    }
+  },
+  mounted() {
+    let input = document.getElementById("input")
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("go-button").click();
+      }
+    });
   },
   beforeRouteEnter(to, from, next){
     if (store.state.logged === -1 || store.state.username === "") {
@@ -83,7 +99,7 @@ export default {
       border-bottom: 2px solid white;
       font-size: 200%;
       text-align: center;
-      color: white;
+      color: black;
       margin: auto;
       @media (max-width: 700px){
         width: 80%;

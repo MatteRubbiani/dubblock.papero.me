@@ -20,7 +20,7 @@
   <div class="buttons_wrapper">
     <button class="join" v-if="game.localId === null" @click="join">Join</button>
     <button class="change_pawn" v-if="game.localId !== null" @click="showChangePawn=true">Change Pawn</button>
-    <button class="quit" v-if="game.localId !== null" @click="quit">Quit</button>
+    <button class="quit" v-if="game.localId !== null && game.players.length >= 1" @click="quit">Quit</button>
     <button class="start" v-if="game.localId !== null && isAdmin">Start</button>
   </div>
   <div class="change-pawn_background" @click="showChangePawn=false" v-if="showChangePawn"></div>
