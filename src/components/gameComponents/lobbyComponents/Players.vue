@@ -24,8 +24,7 @@ export default {
   width: fit-content;
   margin: 10vh auto;
   @media (max-width: 850px) {
-    width: 100%;
-    margin-top: 0;
+    margin: 0 auto;
   }
 }
 </style>
