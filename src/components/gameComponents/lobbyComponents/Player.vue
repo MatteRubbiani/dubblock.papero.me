@@ -43,6 +43,8 @@ export default {
     @media (orientation: portrait) {
       height: 40vw;
       width: 40vw;
+      grid-column: auto;
+      grid-row: auto;
     }
   }
 
