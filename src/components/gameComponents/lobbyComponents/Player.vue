@@ -37,6 +37,7 @@ export default {
   width: 150px;
   display: flex;
   flex-flow: column;
+  position: relative;
   @media (max-width: 850px) {
     height: 15vw;
     width: 15vw;
@@ -68,6 +69,10 @@ export default {
     .admin{
       color: red;
       margin: 0;
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      text-align: center;
     }
   }
 
