@@ -1,7 +1,9 @@
 <template>
 <div class="lobby_wrapper">
+  <div class="rotate">
+    <p>Rotate your phone please</p>
+  </div>
   <div class="lobby-header_wrapper">Dubblock</div>
-
   <div class="settings_wrapper">
     <p class="difficulty_text">Difficulty: </p>
     <div class="difficulty-setting_wrapper">
@@ -83,14 +85,22 @@ export default {
   max-width: 1500px;
   height: 100%;
   overflow: hidden;
-  @media (orientation: landscape) {
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-    overflow-x: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
+  .rotate{
+    display: none;
+    @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape){
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: black;
+      z-index: 6;
+      p{
+        color: white;
+        margin: auto;
+      }
+    }
   }
 
   .lobby-header_wrapper {
