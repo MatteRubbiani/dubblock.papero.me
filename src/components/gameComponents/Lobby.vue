@@ -8,9 +8,9 @@
   <div class="settings_wrapper">
     <p class="difficulty_text">Difficulty: </p>
     <div class="difficulty-setting_wrapper">
-      <img src="@/assets/upArrow.png" alt="" v-if="isAdmin">
+      <img src="@/assets/upArrow.png" alt="" v-if="isAdmin" @click="changeDifficulty(-1)">
       <div class="difficulty-level">{{game.settings.difficulty}}</div>
-      <img src="@/assets/downArrow.png" alt="" v-if="isAdmin">
+      <img src="@/assets/downArrow.png" alt="" v-if="isAdmin" @click="changeDifficulty(1)">
     </div>
   </div>
 
@@ -68,6 +68,10 @@ export default {
     },
     join: function (){
       this.socket.emit(websocketEvents.JOIN_GAME)
+    },
+    changeDifficulty: function (quantity){
+    this.game.settings.difficulty += quantity
+      this.socket.emit(websocketEvents.CHANGE_DIFFICULTY, (this.game.settings.difficulty))
     },
     changeFullScreen: function (){
       if (!this.fullScreen){
