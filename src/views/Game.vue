@@ -2,8 +2,8 @@
   <UserHamburgerMenu :show="showHamburgerMenu"
                    :src="require('@/assets/hamburger_icon_dark.png')"
                    @toggle-show="showHamburgerMenu=$event"/>
-  <Lobby v-if="socket  && game.status === 0" :gameId="gameId" :socket="socket" :game="game"></Lobby>
-  <GameScene  v-if="socket  && game.status === 1"></GameScene>
+  <Lobby v-if="socket  && status === 0" :gameId="gameId" :socket="socket" :game="game"></Lobby>
+  <GameScene  v-if="socket  && status === 1"></GameScene>
 </template>
 
 
@@ -22,7 +22,8 @@ export default {
     return {
       socket: null,
       showHamburgerMenu: false,
-      game: null
+      game: null,
+      status: 0
     }
   },
   computed: {
@@ -47,6 +48,7 @@ export default {
 
     this.socket.on(websocketEvents.GAME_MODIFIED, data => {
       this.game = data
+      this.status = data.status
     })
   }
 }
