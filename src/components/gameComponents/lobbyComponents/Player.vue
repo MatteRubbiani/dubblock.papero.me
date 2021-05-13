@@ -79,17 +79,6 @@ export default {
         text-align: center;
       }
     }
-
-    .admin_image-wrapper {
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      top: -5px;
-      right: 10%;
-      img {
-        width: 100%;
-      }
-    }
   }
 
 }
