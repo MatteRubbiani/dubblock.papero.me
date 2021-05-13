@@ -14,7 +14,7 @@ import io from "socket.io-client";
 import UserHamburgerMenu from "../components/UserHamburgerMenu";
 import Lobby from "../components/gameComponents/Lobby";
 import GameScene from "../components/gameComponents/GameScene";
-import {urls} from "../constants/constants"; // {game ...}
+import {urls} from "../constants/constants";
 import websocketEvents from "../constants/websocketEvents";
 import Loading from "../components/Loading";
 export default {
@@ -24,8 +24,8 @@ export default {
     return {
       socket: null,
       showHamburgerMenu: false,
-      game: null,//game,
-      status: null //1 //TODO: change
+      game: null,
+      status: null //TODO: change
     }
   },
   computed: {

@@ -39,15 +39,10 @@ export default {
   props: {
     gameId: String,
     socket: Object,
+    game: Object
   },
   data(){
     return {
-      game: {
-        players: [],
-        settings: {
-          difficulty: 0
-        }
-      },
       showChangePawn: false,
       fullScreen: false
     }
@@ -85,12 +80,6 @@ export default {
       this.fullScreen = !this.fullScreen
     }
   },
-  mounted() {
-    this.socket.on(websocketEvents.LOBBY_MODIFIED, (game)=>{
-      console.log("event: ", game)
-      this.game = game;
-    });
-  }
 }
 </script>
 

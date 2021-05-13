@@ -12,6 +12,9 @@ export default {
   props: {
     players: Array,
     localId: Number
+  },
+  mounted() {
+    console.log(this.players)
   }
 }
 </script>
