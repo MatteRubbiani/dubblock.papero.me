@@ -20,7 +20,6 @@ export default {
   components: {GameScene, Lobby, UserHamburgerMenu},
   data() {
     return {
-      status: 0, //TODO: change to test
       socket: null,
       showHamburgerMenu: false,
       game: null
@@ -42,6 +41,7 @@ export default {
     })
 
     this.socket.on(websocketEvents.LOBBY_MODIFIED, data => {
+      console.log("lobby modified ", data)
       this.game = data
     })
 
