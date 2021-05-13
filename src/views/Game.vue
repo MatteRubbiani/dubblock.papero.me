@@ -4,6 +4,7 @@
                    @toggle-show="showHamburgerMenu=$event"/>
   <Lobby v-if="socket  && status === 0" :gameId="gameId" :socket="socket" :game="game"></Lobby>
   <GameScene  v-if="socket  && status === 1"></GameScene>
+  <Loading v-if="!socket || !status"></Loading>
 </template>
 
 
@@ -15,15 +16,16 @@ import Lobby from "../components/gameComponents/Lobby";
 import GameScene from "../components/gameComponents/GameScene";
 import {urls} from "../constants/constants";
 import websocketEvents from "../constants/websocketEvents";
+import Loading from "../components/Loading";
 export default {
   name: "Game",
-  components: {GameScene, Lobby, UserHamburgerMenu},
+  components: {Loading, GameScene, Lobby, UserHamburgerMenu},
   data() {
     return {
       socket: null,
       showHamburgerMenu: false,
       game: null,
-      status: 0
+      status: null
     }
   },
   computed: {
