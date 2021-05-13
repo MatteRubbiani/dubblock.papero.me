@@ -21,7 +21,7 @@
     <button class="join" v-if="game.localId === null" @click="join">Join</button>
     <button class="change_pawn" v-if="game.localId !== null" @click="showChangePawn=true">Change Pawn</button>
     <button class="quit" v-if="game.localId !== null && game.players.length > 1" @click="quit">Quit</button>
-    <button class="start" v-if="game.localId !== null && isAdmin">Start</button>
+    <button class="start" v-if="game.localId !== null && isAdmin" @click="start">Start</button>
   </div>
   <div class="change-pawn_background" @click="showChangePawn=false" v-if="showChangePawn"></div>
   <ChangePawn :players="game.players" :localId="game.localId" :socket="socket" v-if="showChangePawn && socket" @close="showChangePawn=false"></ChangePawn>
@@ -67,6 +67,9 @@ export default {
     },
     join: function (){
       this.socket.emit(websocketEvents.JOIN_GAME)
+    },
+    start: function (){
+      this.socket.emit(websocketEvents.START_GAME)
     },
     changeDifficulty: function (quantity){
     this.game.settings.difficulty += quantity
