@@ -4,5 +4,8 @@ export default {
     JOIN_GAME: "join-game",
     QUIT_GAME: "quit-game",
     CHANGE_PAWN: "change-pawn",
-    CHANGE_DIFFICULTY: "change-difficulty"
+    CHANGE_DIFFICULTY: "change-difficulty",
+
+    START_GAME: "start-game",
+    GAME_MODIFIED: "game-modified"
 }

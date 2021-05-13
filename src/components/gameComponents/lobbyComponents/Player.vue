@@ -3,11 +3,10 @@
     <div class="player_pawn">
       <img :src="imageUrl" alt="">
     </div>
-    <div class="username_wrapper" :class="{'you': you}">
+    <div class="username_wrapper" :class="{'you': you, 'admin': admin}">
       <div class="username_wrapper">
         <p class="username">{{ username }}</p>
       </div>
-      <div class="admin_image-wrapper" v-if="admin"><img src="@/assets/admin.png" alt=""></div>
     </div>
   </div>
 </template>
@@ -64,6 +63,10 @@ export default {
 
     &.you {
       font-weight: bold;
+    }
+
+    &.admin{
+      color: red;
     }
 
     .username_wrapper {
