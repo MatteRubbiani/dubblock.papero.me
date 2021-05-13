@@ -1,10 +1,17 @@
 <template>
-<div>Game scene</div>
+<div>
+  <Menu :game="game"></Menu>
+</div>
 </template>
 
 <script>
+import Menu from "./gameSceneComponents/Menu";
 export default {
-  name: "GameScene"
+  name: "GameScene",
+  components: {Menu},
+  props: {
+    game: Object
+  }
 }
 </script>
 

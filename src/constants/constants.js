@@ -19,28 +19,36 @@ const game = {
             username: "chicco",
             shape: 1,
             color: 0,
-            admin: false
+            admin: false,
+            online: true,
+            playing: false
         },
         {
             localId: 3,
             username: "lalla",
-            shape: 1,
+            shape: 0,
             color: 2,
-            admin: true
+            admin: true,
+            online: false,
+            playing: false
         },
         {
             localId: 1,
             username: "matteoilmigliore",
             shape: 3,
             color: 3,
-            admin: false
+            admin: false,
+            online: false,
+            playing: true
         },
         {
             localId: 7,
             username: "mamma",
-            shape: 1,
-            color: 3,
-            admin: false
+            shape: 2,
+            color: 1,
+            admin: false,
+            online: true,
+            playing: false
         }
     ]
 }

@@ -3,7 +3,7 @@
                    :src="require('@/assets/hamburger_icon_dark.png')"
                    @toggle-show="showHamburgerMenu=$event"/>
   <Lobby v-if="socket  && status === 0" :gameId="gameId" :socket="socket" :game="game"></Lobby>
-  <GameScene  v-if="socket  && status === 1"></GameScene>
+  <GameScene  v-if="socket  && status === 1" :game="game"></GameScene>
   <Loading v-if="!socket || !status"></Loading>
 </template>
 
@@ -14,7 +14,7 @@ import io from "socket.io-client";
 import UserHamburgerMenu from "../components/UserHamburgerMenu";
 import Lobby from "../components/gameComponents/Lobby";
 import GameScene from "../components/gameComponents/GameScene";
-import {urls} from "../constants/constants";
+import {urls} from "../constants/constants"; // {game ...}
 import websocketEvents from "../constants/websocketEvents";
 import Loading from "../components/Loading";
 export default {
@@ -24,8 +24,8 @@ export default {
     return {
       socket: null,
       showHamburgerMenu: false,
-      game: null,
-      status: null
+      game: null,//game,
+      status: null //1 //TODO: change
     }
   },
   computed: {
@@ -44,7 +44,7 @@ export default {
     })
 
     this.socket.on(websocketEvents.LOBBY_MODIFIED, data => {
-      console.log("lobby modified ", data)
+      this.status = data.status
       this.game = data
     })
 
