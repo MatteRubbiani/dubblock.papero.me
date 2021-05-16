@@ -50,6 +50,7 @@ export default {
 
     this.socket.on(websocketEvents.GAME_MODIFIED, data => {
       this.game = data
+      console.log(data)
       this.status = data.status
     })
   }
