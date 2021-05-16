@@ -6,8 +6,10 @@
                    :username="playingPlayer.username"
                    :shape="playingPlayer.shape"
                    :color="playingPlayer.color"
-                   :you="playingPlayer.localId === game.localId"
-    ></PlayingPlayer>
+                   :you="playingPlayer.localId === game.localId"></PlayingPlayer>
+    <button class="revelation_button" v-if="playingPlayer.localId === game.localId">Reveal</button>
+    <button class="earthquake_button" v-if="playingPlayer.localId === game.localId">Earthquake</button>
+
   </div>
 </template>
 
@@ -44,6 +46,12 @@ export default {
 
   h1{
     color: black;
+  }
+
+  button{
+    width: 80%;
+    margin: 5px auto;
+    font-size: 30px;
   }
 }
 </style>

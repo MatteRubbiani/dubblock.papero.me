@@ -1,20 +1,24 @@
 <template>
-<div>
+<div class="game_scene_wrapper">
   <Menu :game="game"></Menu>
+  <GameBoard :game="game"></GameBoard>
 </div>
 </template>
 
 <script>
 import Menu from "./gameSceneComponents/Menu";
+import GameBoard from "./gameSceneComponents/GameBoard";
 export default {
   name: "GameScene",
-  components: {Menu},
+  components: {GameBoard, Menu},
   props: {
     game: Object
   }
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.game_scene_wrapper{
+  height: 100%;
+}
 </style>

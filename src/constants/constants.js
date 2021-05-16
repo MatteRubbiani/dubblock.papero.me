@@ -11,7 +11,9 @@ const urls = {
 const game = {
     localId: 1,
     settings: {
-        difficulty: 2
+        difficulty: 2,
+        rows: 10,
+        columns: 5
     },
     players: [
         {
@@ -21,7 +23,9 @@ const game = {
             color: 0,
             admin: false,
             online: true,
-            playing: false
+            playing: false,
+            row: 1,
+            column: 2
         },
         {
             localId: 3,
@@ -30,7 +34,9 @@ const game = {
             color: 2,
             admin: true,
             online: false,
-            playing: false
+            playing: false,
+            row: 0,
+            column: 2
         },
         {
             localId: 1,
@@ -39,7 +45,20 @@ const game = {
             color: 3,
             admin: false,
             online: false,
-            playing: true
+            playing: true,
+            row: 0,
+            column: 2
+        },
+
+        {
+            localId: 18,
+            shape: 1,
+            color: 1,
+            admin: false,
+            online: false,
+            playing: false,
+            row: 0,
+            column: 2
         },
         {
             localId: 7,
@@ -48,9 +67,30 @@ const game = {
             color: 1,
             admin: false,
             online: true,
-            playing: false
+            playing: false,
+            row: 0,
+            column: 3
         }
+    ],
+    obstacles: [
+        {
+            row: 0,
+            column: 2
+        },
+        {
+            row: 2,
+            column: 1
+        },
+        {
+            row: 3,
+            column: 3
+        },
+        {
+            row: 0,
+            column: 3
+        },
     ]
+
 }
 
 module.exports = {
