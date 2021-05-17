@@ -164,6 +164,7 @@ export default {
       this.blocks = this.generateBlocks()
     })
     this.socket.on(websocketEvents.MOVE_BLOCK, () => {
+      console.log("move blockkkk")
       this.blocks = this.generateBlocks()
     })
   }
