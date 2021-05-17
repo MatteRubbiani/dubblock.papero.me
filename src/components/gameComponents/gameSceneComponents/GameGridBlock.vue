@@ -14,7 +14,7 @@
     </div>
     <transition-group name="fade">
       <div class="obstacle_wrapper"
-           v-if="obstacle"
+           v-if="hasObstacle"
            :class="{'selected': selectedObstacle}"
            @click="selectObstacle">
         <img src="@/assets/obstacle.png" alt="">
@@ -22,7 +22,7 @@
     </transition-group>
 
     <div class="move-obstacle-here_wrapper"
-         v-if="obstacleAvailable && !obstacle"
+         v-if="obstacleAvailable && !hasObstacle"
          @click="clickedObstacleMove">
       <div class="move-obstacle-here"></div>
     </div>
@@ -31,10 +31,16 @@
 
 <script>
 import GridBlockPawn from "./GridBlockPawn";
+import websocketEvents from "../../../constants/websocketEvents";
 
 export default {
   name: "GameGridBlock",
   components: {GridBlockPawn},
+  data(){
+    return {
+      hasObstacle: false
+    }
+  },
   props: {
     column: Number,
     row: Number,
@@ -45,7 +51,8 @@ export default {
     selectedPawn: Boolean,
     selectedObstacle: Boolean,
     availablePawnMove: Boolean,
-    obstacleAvailable: Boolean
+    obstacleAvailable: Boolean,
+    socket: Object
   },
   computed: {
     pawns: function () {
@@ -89,6 +96,16 @@ export default {
       this.$emit("moveObstacle", [this.row, this.column])
       console.log("move obstacle here")
     },
+  },
+  mounted() {
+    this.hasObstacle = this.obstacle
+    this.socket.on(websocketEvents.MOVE_BLOCK, data => {
+      if (this.row === data.from_row && this.column === data.from_column){
+        this.hasObstacle = false
+      }else if(this.row === data.to_row && this.column === data.to_column){
+        this.hasObstacle = true
+      }
+    })
   }
 }
 </script>
