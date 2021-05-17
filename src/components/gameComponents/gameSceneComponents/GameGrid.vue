@@ -166,6 +166,12 @@ export default {
   },
   mounted() {
     this.setSize()
+    this.game.players.forEach(p => {
+      if (p.localId === this.game.localId) {
+        this.selectedPawn.row = p.row
+        this.selectedPawn.column = p.column
+      }
+    })
     window.addEventListener('resize', () => {
       this.setSize()
     })
