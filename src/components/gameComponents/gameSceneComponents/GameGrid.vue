@@ -112,14 +112,16 @@ export default {
     moveObstacle(row, column) {
       this.socket.emit(
           websocketEvents.MOVE_BLOCK,
-          {from_row: this.selectedObstacle.row,
+          {
+            from_row: this.selectedObstacle.row,
             from_column: this.selectedObstacle.column,
             to_row: row,
-            to_column: column})
+            to_column: column
+          })
       this.selectedObstacle.row = null;
       this.selectedObstacle.column = null
     },
-    generateBlocks(){
+    generateBlocks() {
       let b = []
       for (let r = 0; r < this.game.settings.rows; r++) {
         for (let c = 0; c < this.game.settings.columns; c++) {
@@ -158,6 +160,9 @@ export default {
       this.setSize()
     })
     this.blocks = this.generateBlocks()
+    this.socket.on(websocketEvents.CHANGE_PAWN, () => {
+      this.blocks = this.generateBlocks()
+    })
   }
 }
 </script>
