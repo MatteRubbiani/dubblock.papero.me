@@ -44,6 +44,7 @@ export default {
     })
 
     this.socket.on(websocketEvents.LOBBY_MODIFIED, data => {
+      console.log(data)
       this.status = data.status
       this.game = data
     })
