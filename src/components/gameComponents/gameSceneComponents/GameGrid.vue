@@ -140,8 +140,12 @@ export default {
 
     },
     moveObstacle(row, column) {
-      this.socket.emit(websocketEvents.MOVE_BLOCK, {row: row, column: column})
-      console.log("move obstacle to row: ", row, " column: ", column)
+      this.socket.emit(
+          websocketEvents.MOVE_BLOCK,
+          {from_row: this.selectedObstacle.row,
+            from_column: this.selectedObstacle.column,
+            to_row: row,
+            to_column: column})
     }
   },
   mounted() {
