@@ -164,7 +164,6 @@ export default {
   },
   mounted() {
     this.setSize()
-    this.selectMyPawn()
     window.addEventListener('resize', () => {
       this.setSize()
     })
@@ -174,6 +173,9 @@ export default {
     })
     this.socket.on(websocketEvents.MOVE_BLOCK, () => {
       this.blocks = this.generateBlocks()
+    })
+    this.socket.on(websocketEvents.YOUR_TURN, () => {
+      this.selectMyPawn()
     })
   }
 }
