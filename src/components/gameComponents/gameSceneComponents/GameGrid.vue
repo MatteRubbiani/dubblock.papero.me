@@ -160,7 +160,7 @@ export default {
       this.setSize()
     })
     this.blocks = this.generateBlocks()
-    this.socket.on(websocketEvents.CHANGE_PAWN, () => {
+    this.socket.on(websocketEvents.MOVE_PAWN, () => {
       this.blocks = this.generateBlocks()
     })
   }
