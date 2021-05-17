@@ -6,6 +6,7 @@
                    :username="playingPlayer.username"
                    :shape="playingPlayer.shape"
                    :color="playingPlayer.color"
+                   :online="playingPlayer.online"
                    :you="playingPlayer.localId === game.localId"></PlayingPlayer>
     <button class="revelation_button" v-if="playingPlayer.localId === game.localId">Reveal</button>
     <button class="earthquake_button" v-if="playingPlayer.localId === game.localId">Earthquake</button>

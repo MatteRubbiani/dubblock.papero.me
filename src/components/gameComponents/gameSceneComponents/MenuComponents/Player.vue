@@ -1,10 +1,10 @@
 <template>
-<div class="player_wrapper">
+  <div class="player_wrapper">
 
-  <div class="pawn_wrapper" :class="{'you': you, 'offline': !online}">
-    <img :src="imageUrl" alt="pawn">
+    <div class="pawn_wrapper" :class="{'you': you, 'offline': !online}">
+      <img :src="imageUrl" alt="pawn">
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.player_wrapper{
+.player_wrapper {
   grid-row: auto;
   grid-column: auto;
   display: flex;
@@ -36,12 +36,15 @@ export default {
   width: fit-content;
   height: fit-content;
   margin: 20px;
-  .pawn_wrapper{
+
+  .pawn_wrapper {
     width: 30px;
-    img{
+
+    img {
       width: 100%;
     }
-    &.offline{
+
+    &.offline {
       -webkit-filter: grayscale(100%);
       filter: grayscale(100%);
     }
