@@ -14,9 +14,9 @@ import io from "socket.io-client";
 import UserHamburgerMenu from "../components/UserHamburgerMenu";
 import Lobby from "../components/gameComponents/Lobby";
 import GameScene from "../components/gameComponents/GameScene";
-import {urls} from "../constants/constants";
-import websocketEvents from "../constants/websocketEvents";
+import { urls} from "../constants/constants";
 import Loading from "../components/Loading";
+import websocketEvents from "../constants/websocketEvents";
 export default {
   name: "Game",
   components: {Loading, GameScene, Lobby, UserHamburgerMenu},
