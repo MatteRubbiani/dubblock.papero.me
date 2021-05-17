@@ -12,14 +12,14 @@
       <GridBlockPawn v-for="i in pawns" :key="i" :shape="i[0]" :color="i[1]"
                      :customWidth="pawnPercentageWidth"></GridBlockPawn>
     </div>
-    <transition name="fade">
+    <transition-group name="fade">
       <div class="obstacle_wrapper"
            v-if="obstacle"
            :class="{'selected': selectedObstacle}"
            @click="selectObstacle">
         <img src="@/assets/obstacle.png" alt="">
       </div>
-    </transition>
+    </transition-group>
 
     <div class="move-obstacle-here_wrapper"
          v-if="obstacleAvailable && !obstacle"
