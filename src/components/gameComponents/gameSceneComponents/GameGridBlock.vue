@@ -1,7 +1,11 @@
 <template>
   <div class="grid-block_wrapper" :class="{'available-pawn-move': availablePawnMove}">
+    <div class="move-pawn-here_wrapper"
+         v-if="shapes.length === 0"
+         @click="selectPawn">
+    </div>
     <div class="pawn_wrapper"
-         v-if="shapes.length !== 0 && shapes.length !== 0"
+         v-if="shapes.length !== 0"
          :class="{'selected': selectedPawn && you}"
          :style="style"
          @click="selectPawn">
@@ -64,7 +68,8 @@ export default {
       console.log("selected pawn, you ? ", this.you)
       if (this.you) {
         this.$emit("selectPawn", [this.row, this.column])
-      } else if (this.availablePawnMove) {
+      } else {
+        console.log("not you, calling clickePanMove")
         this.clickedPawnMove()
       }
     },
@@ -93,6 +98,10 @@ export default {
   border: 1px solid black;
   //border-left: 1px solid black;
   //border-right: 1px solid black;
+  .move-pawn-here_wrapper{
+    width: 100%;
+    height: 80%;
+  }
   .pawn_wrapper {
     width: 60%;
     height: 80%;
