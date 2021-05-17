@@ -1,7 +1,7 @@
 <template>
   <div class="board_wrapper">
     <div class="board_container" id="board-container">
-      <GameGrid :game="game" :socket="socket"></GameGrid>
+      <GameGrid v-if="socket" :game="game" :socket="socket"></GameGrid>
       <RowIndicator :game="game"></RowIndicator>
     </div>
   </div>

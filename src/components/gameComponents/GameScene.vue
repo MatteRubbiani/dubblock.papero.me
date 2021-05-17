@@ -1,7 +1,7 @@
 <template>
 <div class="game_scene_wrapper">
   <Menu :game="game"></Menu>
-  <GameBoard :game="game" :socket="socket"></GameBoard>
+  <GameBoard v-if="socket" :game="game" :socket="socket"></GameBoard>
 </div>
 </template>
 
