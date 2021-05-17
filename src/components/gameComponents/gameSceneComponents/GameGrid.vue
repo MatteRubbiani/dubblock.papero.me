@@ -167,7 +167,7 @@ export default {
   mounted() {
     this.setSize()
     this.game.players.forEach(p => {
-      if (p.localId === this.game.localId) {
+      if (p.localId === this.game.localId && p.playing) {
         this.selectedPawn.row = p.row
         this.selectedPawn.column = p.column
       }
