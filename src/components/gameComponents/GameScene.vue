@@ -14,9 +14,6 @@ export default {
   props: {
     game: Object,
     socket: Object
-  },
-  mounted() {
-    console.log("game scene mounted. socket:  ", this.socket)
   }
 }
 </script>

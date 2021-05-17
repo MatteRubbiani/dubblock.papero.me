@@ -136,7 +136,7 @@ export default {
     },
     movePawn(row, column) {
       this.socket.emit(websocketEvents.MOVE_PAWN, {row: row, column: column})
-      console.log("move pawn to row: ", row, " column: ", column)
+      this.selectNewPawn({row: null, column: null})
 
     },
     moveObstacle(row, column) {
@@ -145,7 +145,6 @@ export default {
     }
   },
   mounted() {
-    console.log("mounted game grid, socket: ", this.socket)
     this.setSize()
     window.addEventListener('resize', () => {
       this.setSize()
