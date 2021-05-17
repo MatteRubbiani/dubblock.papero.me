@@ -100,8 +100,7 @@ export default {
     selectMyPawn() {
       let pawn = {row: null, column: null}
       this.game.players.forEach(p => {
-        if (p.localId === this.game.localId) pawn.row = p.row;
-        pawn.column = p.column
+        if (p.localId === this.game.localId) pawn.row = p.row; pawn.column = p.column
       })
       console.log(pawn)
       this.selectNewPawn(pawn)
