@@ -13,17 +13,20 @@
                  :obstacleAvailable="obstaclesAvailable"
                  @selectPawn="selectNewPawn($event)"
                  @selectObstacle="selectNewObstacle($event)"
+                 @movePawn="movePawn($event[0], $event[1])"
   ></GameGridBlock>
 </div>
 </template>
 
 <script>
 import GameGridBlock from "./GameGridBlock";
+import websocketEvents from "../../../constants/websocketEvents";
 export default {
   name: "GameGrid",
   components: {GameGridBlock},
   props:{
     game: Object,
+    socket:Object
   },
   data(){
     return {
@@ -124,6 +127,11 @@ export default {
       this.selectedPawn.row = null; this.selectedPawn.column = null
       if (!this.playing) return null
       this.selectedObstacle.row = obstacle[0]; this.selectedObstacle.column = obstacle[1]
+    },
+    movePawn(row, column){
+      this.socket.emit(websocketEvents.MOVE_PAWN, {row: row, column: column})
+      console.log("move to row: ", row, " column: ", column)
+
     }
   },
   mounted() {

@@ -7,5 +7,6 @@ export default {
     CHANGE_DIFFICULTY: "change-difficulty",
 
     START_GAME: "start-game",
-    GAME_MODIFIED: "game-modified"
+    GAME_MODIFIED: "game-modified",
+    MOVE_PAWN: "move-pawn"
 }

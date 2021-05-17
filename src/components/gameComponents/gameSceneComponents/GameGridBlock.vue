@@ -61,7 +61,8 @@ export default {
     selectPawn: function (){
       console.log(this.you)
       if (this.you){
-        this.$emit("selectPawn", [this.row, this.column])
+        if (this.availablePawnMove) this.clickedPawnMove()
+        else this.$emit("selectPawn", [this.row, this.column])
       }
     },
     selectObstacle: function (){
