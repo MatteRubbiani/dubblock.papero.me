@@ -75,11 +75,9 @@ export default {
   },
   methods: {
     selectPawn: function () {
-      console.log("selected pawn, you ? ", this.you)
       if (this.you) {
         this.$emit("selectPawn", [this.row, this.column])
       } else {
-        console.log("not you, calling clickePanMove")
         this.clickedPawnMove()
       }
     },
@@ -89,12 +87,10 @@ export default {
     clickedPawnMove: function () {
       if (this.availablePawnMove) {
         this.$emit("movePawn", [this.row, this.column])
-        console.log("move pawn here")
       }
     },
     clickedObstacleMove: function () {
       this.$emit("moveObstacle", [this.row, this.column])
-      console.log("move obstacle here")
     },
   },
   mounted() {

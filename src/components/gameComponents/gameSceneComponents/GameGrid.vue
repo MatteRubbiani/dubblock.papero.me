@@ -97,11 +97,13 @@ export default {
       this.selectedPawn.row = pawn[0];
       this.selectedPawn.column = pawn[1]
     },
-    selectMyPawn(){
+    selectMyPawn() {
       let pawn = {row: null, column: null}
       this.game.players.forEach(p => {
-        if (p.localId === this.game.localId) pawn.row = p.row; pawn.column = p.column
+        if (p.localId === this.game.localId) pawn.row = p.row;
+        pawn.column = p.column
       })
+      console.log(pawn)
       this.selectNewPawn(pawn)
     },
     selectNewObstacle(obstacle) {
@@ -163,18 +165,16 @@ export default {
   },
   mounted() {
     this.setSize()
+    this.selectMyPawn()
     window.addEventListener('resize', () => {
       this.setSize()
     })
     this.blocks = this.generateBlocks()
     this.socket.on(websocketEvents.MOVE_PAWN, () => {
       this.blocks = this.generateBlocks()
-      this.selectMyPawn() //mettilo nell'evento nuovo turno
     })
     this.socket.on(websocketEvents.MOVE_BLOCK, () => {
-      console.log("move blockkkk")
       this.blocks = this.generateBlocks()
-      this.selectMyPawn()
     })
   }
 }
