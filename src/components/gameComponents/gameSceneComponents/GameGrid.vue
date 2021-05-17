@@ -154,6 +154,7 @@ export default {
       this.setSize()
     })
   this.socket.on(websocketEvents.MOVE_BLOCK, data => {
+    console.log("move block: ", data)
     this.blocks.forEach(b => {
       if (b.row === data.from_row && b.column === data.from_column){
         b.obstacle = false
