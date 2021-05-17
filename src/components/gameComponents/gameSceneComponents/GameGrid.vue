@@ -35,7 +35,8 @@ export default {
     return {
       blockSize: 10,
       selectedPawn: {row: null, column: null},
-      selectedObstacle: {row: null, column: null}
+      selectedObstacle: {row: null, column: null},
+      blocks: []
     }
   },
   computed: {
@@ -47,38 +48,6 @@ export default {
         'grid-template-rows': 'repeat(' + this.game.settings.rows + ',' + 100 / this.game.settings.rows + '%)'
 
       }
-    },
-    blocks: function () {
-      let b = []
-      for (let r = 0; r < this.game.settings.rows; r++) {
-        for (let c = 0; c < this.game.settings.columns; c++) {
-          let colors = []
-          let shapes = []
-          let you = false
-          this.game.players.forEach(player => {
-            if (player.row === r && player.column === c) {
-              colors.push(player.color)
-              shapes.push(player.shape)
-              if (player.localId === this.game.localId) you = true
-            }
-          })
-          let obstacle = false
-          this.game.obstacles.forEach(o => {
-            if (o.row === r && o.column === c) obstacle = true
-          })
-          b.push({
-            row: r,
-            column: c,
-            colors: colors,
-            shapes: shapes,
-            you: you,
-            obstacle: obstacle,
-            selectedPawn: (this.selectedPawn.row === r && this.selectedPawn.column === c),
-            selectedObstacle: (this.selectedObstacle.row === r && this.selectedObstacle.column === c)
-          })
-        }
-      }
-      return b
     },
     availablePawnMoveBlocks: function () {
       if (this.selectedPawn.row === null || this.selectedPawn.column === null) return []
@@ -149,6 +118,38 @@ export default {
             to_column: column})
       this.selectedObstacle.row = null;
       this.selectedObstacle.column = null
+    },
+    generateBlocks(){
+      let b = []
+      for (let r = 0; r < this.game.settings.rows; r++) {
+        for (let c = 0; c < this.game.settings.columns; c++) {
+          let colors = []
+          let shapes = []
+          let you = false
+          this.game.players.forEach(player => {
+            if (player.row === r && player.column === c) {
+              colors.push(player.color)
+              shapes.push(player.shape)
+              if (player.localId === this.game.localId) you = true
+            }
+          })
+          let obstacle = false
+          this.game.obstacles.forEach(o => {
+            if (o.row === r && o.column === c) obstacle = true
+          })
+          b.push({
+            row: r,
+            column: c,
+            colors: colors,
+            shapes: shapes,
+            you: you,
+            obstacle: obstacle,
+            selectedPawn: (this.selectedPawn.row === r && this.selectedPawn.column === c),
+            selectedObstacle: (this.selectedObstacle.row === r && this.selectedObstacle.column === c)
+          })
+        }
+      }
+      return b
     }
   },
   mounted() {
@@ -156,6 +157,7 @@ export default {
     window.addEventListener('resize', () => {
       this.setSize()
     })
+    this.blocks = this.generateBlocks()
   }
 }
 </script>
