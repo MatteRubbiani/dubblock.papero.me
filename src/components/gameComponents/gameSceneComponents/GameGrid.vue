@@ -147,7 +147,8 @@ export default {
             from_column: this.selectedObstacle.column,
             to_row: row,
             to_column: column})
-      this.selectNewObstacle({row: null, column: null})
+      this.selectedObstacle.row = null;
+      this.selectedObstacle.column = null
     }
   },
   mounted() {
