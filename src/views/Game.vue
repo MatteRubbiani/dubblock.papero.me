@@ -34,6 +34,7 @@ export default {
     }
   },
   mounted() {
+    console.log("mounted game")
     this.socket = io(urls.baseUrl, {
       path: urls.socketPath,
       autoConnect: true
