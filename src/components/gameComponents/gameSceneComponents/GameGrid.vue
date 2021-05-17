@@ -158,8 +158,10 @@ export default {
     this.blocks.forEach(b => {
       if (b.row === data.from_row && b.column === data.from_column){
         b.obstacle = false
+        console.log("fond block to remove: ", b)
       }else if(b.row === data.to_row && b.column === data.to_column){
         b.obstacle = true
+        console.log("fond block to add: ", b)
       }
     })
   })
