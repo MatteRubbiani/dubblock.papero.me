@@ -27,7 +27,7 @@ export default {
   methods: {
     changeFullScreen: function (){
       if (!this.fullScreen){
-        let el = document.getElementById("app")
+        let el = document.getElementById("board-container")
         el.requestFullscreen()
       }else{
         document.exitFullscreen()
