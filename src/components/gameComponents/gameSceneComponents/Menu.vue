@@ -45,7 +45,9 @@ export default {
   top: 0;
   right: 0;
   @media (max-width: 700px) {
-    display: none; // da cambiare
+    width: 100%;
+    position: relative;
+    height: 50%;
   }
   h1{
     color: black;

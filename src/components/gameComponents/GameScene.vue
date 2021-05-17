@@ -4,8 +4,8 @@
     <img src="@/assets/fullScreen.png" alt="" v-if="!fullScreen">
     <img src="@/assets/exitFullScreen.png" alt="" v-if="fullScreen">
   </div>
-  <Menu :game="game"></Menu>
   <GameBoard v-if="socket" :game="game" :socket="socket"></GameBoard>
+  <Menu :game="game"></Menu>
 </div>
 </template>
 
@@ -52,6 +52,11 @@ export default {
     img{
       width: 100%;
     }
+  }
+  @media (max-width: 700px){
+    height: 200%;
+    display: flex;
+    flex-flow: column;
   }
 }
 </style>

@@ -166,12 +166,6 @@ export default {
   },
   mounted() {
     this.setSize()
-    this.game.players.forEach(p => {
-      if (p.localId === this.game.localId && p.playing) {
-        this.selectedPawn.row = p.row
-        this.selectedPawn.column = p.column
-      }
-    })
     window.addEventListener('resize', () => {
       this.setSize()
     })
@@ -197,5 +191,8 @@ export default {
   user-select: none;
   //grid-column-gap: 1px;
   grid-gap: 1px;
+  @media (max-width: 700px) {
+    margin: 5% auto;
+  }
 }
 </style>
