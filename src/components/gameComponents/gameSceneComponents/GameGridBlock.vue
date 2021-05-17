@@ -62,7 +62,7 @@ export default {
       console.log("selected pawn, you ? ", this.you)
       if (this.you){
         console.log("available pawn move ? ", this.availablePawnMove)
-        if (this.availablePawnMove)   {
+        if (!this.availablePawnMove)   {
           this.clickedPawnMove()
         } else {
           this.$emit("selectPawn", [this.row, this.column])
