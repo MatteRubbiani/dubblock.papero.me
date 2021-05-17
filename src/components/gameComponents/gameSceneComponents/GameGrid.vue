@@ -145,6 +145,7 @@ export default {
     }
   },
   mounted() {
+    console.log("mounted game grid, socket: ", this.socket)
     this.setSize()
     window.addEventListener('resize', () => {
       this.setSize()

@@ -18,6 +18,9 @@ export default {
     game: Object,
     socket: Object
   },
+  mounted() {
+    console.log("mounted game board, socket: ", this.socket)
+  }
 }
 </script>
 
