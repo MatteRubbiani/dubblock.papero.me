@@ -36,5 +36,14 @@ export default {
     display: flex;
     flex-flow: row;
   }
+  @media (max-width: 700px) {
+    width: 80%;
+    height: 80%;
+    .board_container{
+      width: 100%;
+      height: 100%;
+      margin: 10%;
+    }
+  }
 }
 </style>

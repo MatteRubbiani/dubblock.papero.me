@@ -44,11 +44,12 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
-
+  @media (max-width: 700px) {
+    display: none; // da cambiare
+  }
   h1{
     color: black;
   }
-
   button{
     width: 80%;
     margin: 5px auto;

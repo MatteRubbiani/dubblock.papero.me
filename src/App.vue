@@ -15,13 +15,14 @@ html{
   overflow-x: hidden;
   width: 100%;
   height: 100%;
-  //background-color: orange;
+  background-color: white;
 }
 
 body{
   margin: 0;
   width: 100%;
   height: 100%;
+  background-color: white;
 }
 
 h1{
