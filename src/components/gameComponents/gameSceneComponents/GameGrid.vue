@@ -101,12 +101,11 @@ export default {
       let pawn = {row: null, column: null}
       this.game.players.forEach(p => {
         if (p.localId === this.game.localId) {
-          pawn.row = p.row
-          pawn.column = p.column
+          this.selectedPawn.row = p.row
+          this.selectedPawn.column = p.column
         }
       })
       console.log("my pawn : ",pawn)
-      this.selectNewPawn(pawn)
     },
     selectNewObstacle(obstacle) {
       this.selectedPawn.row = null;
