@@ -59,10 +59,14 @@ export default {
   },
   methods: {
     selectPawn: function (){
-      console.log(this.you)
+      console.log("selected pawn, you ? ", this.you)
       if (this.you){
-        if (this.availablePawnMove) this.clickedPawnMove()
-        else this.$emit("selectPawn", [this.row, this.column])
+        console.log("available pawn move ? ", this.availablePawnMove)
+        if (this.availablePawnMove)   {
+          this.clickedPawnMove()
+        } else {
+          this.$emit("selectPawn", [this.row, this.column])
+        }
       }
     },
     selectObstacle: function (){
