@@ -8,5 +8,6 @@ export default {
 
     START_GAME: "start-game",
     GAME_MODIFIED: "game-modified",
-    MOVE_PAWN: "move-pawn"
+    MOVE_PAWN: "move-pawn",
+    MOVE_BLOCK: "move-block"
 }

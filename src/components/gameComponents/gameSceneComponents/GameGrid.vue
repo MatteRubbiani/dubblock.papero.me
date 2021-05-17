@@ -1,34 +1,36 @@
 <template>
-<div class="game-grid_wrapper" :style="style">
-  <GameGridBlock v-for="i in blocks" :key="i"
-                 :row=i.row
-                 :column=i.column
-                 :shapes="i.shapes"
-                 :colors="i.colors"
-                 :you="i.you"
-                 :obstacle="i.obstacle"
-                 :selectedPawn="i.selectedPawn"
-                 :selectedObstacle="i.selectedObstacle"
-                 :availablePawnMove="availablePawnMoveBlocks.includes(i.row + ',' + i.column)"
-                 :obstacleAvailable="obstaclesAvailable"
-                 @selectPawn="selectNewPawn($event)"
-                 @selectObstacle="selectNewObstacle($event)"
-                 @movePawn="movePawn($event[0], $event[1])"
-  ></GameGridBlock>
-</div>
+  <div class="game-grid_wrapper" :style="style">
+    <GameGridBlock v-for="i in blocks" :key="i"
+                   :row=i.row
+                   :column=i.column
+                   :shapes="i.shapes"
+                   :colors="i.colors"
+                   :you="i.you"
+                   :obstacle="i.obstacle"
+                   :selectedPawn="i.selectedPawn"
+                   :selectedObstacle="i.selectedObstacle"
+                   :availablePawnMove="availablePawnMoveBlocks.includes(i.row + ',' + i.column)"
+                   :obstacleAvailable="obstaclesAvailable"
+                   @selectPawn="selectNewPawn($event)"
+                   @selectObstacle="selectNewObstacle($event)"
+                   @movePawn="movePawn($event[0], $event[1])"
+                   @moveObstacle="moveObstacle($event[0], $event[1])"
+    ></GameGridBlock>
+  </div>
 </template>
 
 <script>
 import GameGridBlock from "./GameGridBlock";
 import websocketEvents from "../../../constants/websocketEvents";
+
 export default {
   name: "GameGrid",
   components: {GameGridBlock},
-  props:{
+  props: {
     game: Object,
-    socket:Object
+    socket: Object
   },
-  data(){
+  data() {
     return {
       blockSize: 10,
       selectedPawn: {row: null, column: null},
@@ -36,19 +38,19 @@ export default {
     }
   },
   computed: {
-    style: function (){
+    style: function () {
       return {
         'width': this.blockSize * this.game.settings.columns + 'px',
         'height': this.blockSize * this.game.settings.rows + 'px',
-        'grid-template-columns': 'repeat(' + this.game.settings.columns + ',' + 100/this.game.settings.columns + '%)',
-        'grid-template-rows': 'repeat(' + this.game.settings.rows + ',' + 100/this.game.settings.rows + '%)'
+        'grid-template-columns': 'repeat(' + this.game.settings.columns + ',' + 100 / this.game.settings.columns + '%)',
+        'grid-template-rows': 'repeat(' + this.game.settings.rows + ',' + 100 / this.game.settings.rows + '%)'
 
       }
     },
-    blocks: function (){
+    blocks: function () {
       let b = []
-      for (let r=0; r<this.game.settings.rows; r++){
-        for (let c=0; c<this.game.settings.columns; c++){
+      for (let r = 0; r < this.game.settings.rows; r++) {
+        for (let c = 0; c < this.game.settings.columns; c++) {
           let colors = []
           let shapes = []
           let you = false
@@ -77,8 +79,8 @@ export default {
       }
       return b
     },
-    availablePawnMoveBlocks: function (){
-      if (this.selectedPawn.row===null || this.selectedPawn.column===null) return []
+    availablePawnMoveBlocks: function () {
+      if (this.selectedPawn.row === null || this.selectedPawn.column === null) return []
       let av = []
       for (let c = 0; c < this.game.settings.columns; c++) {
         if (this.selectedPawn.column !== c) {
@@ -89,7 +91,7 @@ export default {
       this.game.obstacles.forEach(o => {
         if (o.row === this.selectedPawn.row && o.column === this.selectedPawn.column) nextAvailable = false
       })
-      if (nextAvailable){
+      if (nextAvailable) {
         av.push(
             (this.selectedPawn.row + 1) + "," + this.selectedPawn.column
         )
@@ -98,14 +100,14 @@ export default {
       return av
 
     },
-    obstaclesAvailable: function (){
+    obstaclesAvailable: function () {
       if (this.selectedObstacle.row === null || this.selectedObstacle.column === null) return false
       return true
     },
-    playing: function (){
+    playing: function () {
       let playing = false
       this.game.players.forEach(p => {
-        if (p.localId === this.game.localId && p.playing){
+        if (p.localId === this.game.localId && p.playing) {
           playing = true
         }
       })
@@ -113,38 +115,46 @@ export default {
     }
   },
   methods: {
-    setSize: function (){
+    setSize: function () {
       let blockHeight = document.getElementById("board-container").clientHeight / this.game.settings.rows
-      let blockWidth = document.getElementById("board-container").clientWidth / (this.game.settings.columns+1)
+      let blockWidth = document.getElementById("board-container").clientWidth / (this.game.settings.columns + 1)
       this.blockSize = blockHeight > blockWidth ? parseInt(blockWidth) : parseInt(blockHeight)
     },
-    selectNewPawn(pawn){
-      this.selectedObstacle.row = null; this.selectedObstacle.column = null
+    selectNewPawn(pawn) {
+      this.selectedObstacle.row = null;
+      this.selectedObstacle.column = null
       if (!this.playing) return null
-      this.selectedPawn.row =pawn[0]; this.selectedPawn.column = pawn[1]
+      this.selectedPawn.row = pawn[0];
+      this.selectedPawn.column = pawn[1]
     },
-    selectNewObstacle(obstacle){
-      this.selectedPawn.row = null; this.selectedPawn.column = null
+    selectNewObstacle(obstacle) {
+      this.selectedPawn.row = null;
+      this.selectedPawn.column = null
       if (!this.playing) return null
-      this.selectedObstacle.row = obstacle[0]; this.selectedObstacle.column = obstacle[1]
+      this.selectedObstacle.row = obstacle[0];
+      this.selectedObstacle.column = obstacle[1]
     },
-    movePawn(row, column){
+    movePawn(row, column) {
       this.socket.emit(websocketEvents.MOVE_PAWN, {row: row, column: column})
-      console.log("move to row: ", row, " column: ", column)
+      console.log("move pawn to row: ", row, " column: ", column)
 
+    },
+    moveObstacle(row, column) {
+      this.socket.emit(websocketEvents.MOVE_BLOCK, {row: row, column: column})
+      console.log("move obstacle to row: ", row, " column: ", column)
     }
   },
   mounted() {
     this.setSize()
-    window.addEventListener('resize', ()=>{
-        this.setSize()
+    window.addEventListener('resize', () => {
+      this.setSize()
     })
   }
 }
 </script>
 
 <style scoped lang="scss">
-.game-grid_wrapper{
+.game-grid_wrapper {
   display: grid;
   margin: auto;
   user-select: none;
