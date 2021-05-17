@@ -153,7 +153,7 @@ export default {
     window.addEventListener('resize', () => {
       this.setSize()
     })
-  this.socket.on(websocketEvents.MOVE_PAWN, data => {
+  this.socket.on(websocketEvents.MOVE_BLOCK, data => {
     this.blocks.forEach(b => {
       if (b.row === data.from_row && b.column === data.from_column){
         b.obstacle = false
