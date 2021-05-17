@@ -163,6 +163,9 @@ export default {
     this.socket.on(websocketEvents.MOVE_PAWN, () => {
       this.blocks = this.generateBlocks()
     })
+    this.socket.on(websocketEvents.MOVE_BLOCK, () => {
+      this.blocks = this.generateBlocks()
+    })
   }
 }
 </script>
