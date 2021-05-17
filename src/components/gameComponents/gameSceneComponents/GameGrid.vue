@@ -97,6 +97,13 @@ export default {
       this.selectedPawn.row = pawn[0];
       this.selectedPawn.column = pawn[1]
     },
+    selectMyPawn(){
+      let pawn = {row: null, column: null}
+      this.game.players.forEach(p => {
+        if (p.localId === this.game.localId) pawn.row = p.row; pawn.column = p.column
+      })
+      this.selectNewPawn(pawn)
+    },
     selectNewObstacle(obstacle) {
       this.selectedPawn.row = null;
       this.selectedPawn.column = null
@@ -162,10 +169,12 @@ export default {
     this.blocks = this.generateBlocks()
     this.socket.on(websocketEvents.MOVE_PAWN, () => {
       this.blocks = this.generateBlocks()
+      this.selectMyPawn() //mettilo nell'evento nuovo turno
     })
     this.socket.on(websocketEvents.MOVE_BLOCK, () => {
       console.log("move blockkkk")
       this.blocks = this.generateBlocks()
+      this.selectMyPawn()
     })
   }
 }
