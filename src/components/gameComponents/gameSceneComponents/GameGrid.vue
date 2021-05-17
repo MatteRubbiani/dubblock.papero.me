@@ -102,7 +102,7 @@ export default {
       this.game.players.forEach(p => {
         if (p.localId === this.game.localId) pawn.row = p.row; pawn.column = p.column
       })
-      console.log(pawn)
+      console.log("my pawn : ",pawn)
       this.selectNewPawn(pawn)
     },
     selectNewObstacle(obstacle) {
@@ -175,6 +175,7 @@ export default {
       this.blocks = this.generateBlocks()
     })
     this.socket.on(websocketEvents.YOUR_TURN, () => {
+      console.log("my turnnnn")
       this.selectMyPawn()
     })
   }
