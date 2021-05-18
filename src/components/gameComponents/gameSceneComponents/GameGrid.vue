@@ -120,7 +120,7 @@ export default {
     selectNewPawn(pawn) {
       this.selectedObstacle.row = null;
       this.selectedObstacle.column = null
-      if (!this.playing) return null
+      if (!this.playing || pawn[0] === -1) return null
       this.selectedPawn.row = pawn[0];
       this.selectedPawn.column = pawn[1]
     },
