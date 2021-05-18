@@ -24,7 +24,7 @@ const game = {
             admin: false,
             online: true,
             playing: false,
-            row: 1,
+            row: -1,
             column: 2
         },
         {
@@ -46,7 +46,7 @@ const game = {
             admin: false,
             online: false,
             playing: true,
-            row: 0,
+            row: 9,
             column: 2
         },
 
@@ -88,6 +88,10 @@ const game = {
         {
             row: 0,
             column: 3
+        },
+        {
+            row: 9,
+            column: 2
         },
     ]
 

@@ -28,6 +28,7 @@ export default {
     changeFullScreen: function (){
       if (!this.fullScreen){
         let el = document.getElementById("board-container")
+        console.log(el)
         el.requestFullscreen()
       }else{
         document.exitFullscreen()
@@ -46,9 +47,10 @@ export default {
     height: 40px;
     width: 40px;
     position: absolute;
+    cursor: pointer;
     top: 15px;
     right: 15px;
-    cursor: pointer;
+    z-index: 7;
     img{
       width: 100%;
     }

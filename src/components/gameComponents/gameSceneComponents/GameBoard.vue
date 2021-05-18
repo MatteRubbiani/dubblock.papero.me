@@ -35,10 +35,11 @@ export default {
     margin: 10% auto;
     display: flex;
     flex-flow: row;
+    background-color: white;
   }
   @media (max-width: 700px) {
     width: 100%;
-    height: 60%;
+    height: 55%;
     position: relative;
     margin: 0;
     .board_container{

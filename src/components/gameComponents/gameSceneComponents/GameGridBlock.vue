@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-block_wrapper" :class="{'available-pawn-move': availablePawnMove}">
+  <div class="grid-block_wrapper" :class="{'available-pawn-move': availablePawnMove, 'finish': finish}">
     <div class="move-pawn-here_wrapper"
          v-if="shapes.length === 0"
          @click="selectPawn">
@@ -22,7 +22,7 @@
     </transition-group>
 
     <div class="move-obstacle-here_wrapper"
-         v-if="obstacleAvailable && !hasObstacle"
+         v-if="obstacleAvailable && !hasObstacle && !finish"
          @click="clickedObstacleMove">
       <div class="move-obstacle-here"></div>
     </div>
@@ -52,7 +52,8 @@ export default {
     selectedObstacle: Boolean,
     availablePawnMove: Boolean,
     obstacleAvailable: Boolean,
-    socket: Object
+    socket: Object,
+    finish: Boolean
   },
   computed: {
     pawns: function () {
@@ -163,6 +164,14 @@ export default {
       margin: auto;
       border: 2px dotted red;
       border-spacing: 5px;
+    }
+  }
+
+  &.finish{
+    background-color: orange;
+    border-color: orange;
+    &.available-pawn-move{
+      background-color: red;
     }
   }
 }

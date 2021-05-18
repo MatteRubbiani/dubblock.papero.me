@@ -12,10 +12,26 @@
                    :availablePawnMove="availablePawnMoveBlocks.includes(i.row + ',' + i.column)"
                    :obstacleAvailable="obstaclesAvailable"
                    :socket="socket"
+                   :finish="false"
                    @selectPawn="selectNewPawn($event)"
                    @selectObstacle="selectNewObstacle($event)"
                    @movePawn="movePawn($event[0], $event[1])"
                    @moveObstacle="moveObstacle($event[0], $event[1])"
+    ></GameGridBlock>
+    <GameGridBlock v-for="i in finishBlocks" :key="i"
+                   :row=i.row
+                   :column=i.column
+                   :shapes="i.shapes"
+                   :colors="i.colors"
+                   :you="i.you"
+                   :obstacle="i.obstacle"
+                   :selectedPawn="i.selectedPawn"
+                   :selectedObstacle="i.selectedObstacle"
+                   :availablePawnMove="availableFinish"
+                   :obstacleAvailable="obstaclesAvailable"
+                   :socket="socket"
+                   :finish="true"
+                   @movePawn="finish($event[0], $event[1])"
     ></GameGridBlock>
   </div>
 </template>
@@ -36,7 +52,8 @@ export default {
       blockSize: 10,
       selectedPawn: {row: null, column: null},
       selectedObstacle: {row: null, column: null},
-      blocks: []
+      blocks: [],
+      finishBlocks: []
     }
   },
   computed: {
@@ -45,7 +62,7 @@ export default {
         'width': this.blockSize * this.game.settings.columns + 'px',
         'height': this.blockSize * this.game.settings.rows + 'px',
         'grid-template-columns': 'repeat(' + this.game.settings.columns + ',' + 100 / this.game.settings.columns + '%)',
-        'grid-template-rows': 'repeat(' + this.game.settings.rows + ',' + 100 / this.game.settings.rows + '%)'
+        'grid-template-rows': 'repeat(' + (this.game.settings.rows + 1) + ',' + 100 / this.game.settings.rows + '%)'
 
       }
     },
@@ -73,6 +90,16 @@ export default {
     obstaclesAvailable: function () {
       if (this.selectedObstacle.row === null || this.selectedObstacle.column === null) return false
       return true
+    },
+    availableFinish: function (){
+      if (this.selectedPawn.row === this.game.settings.rows - 1){
+        let nextAvailable = true
+        this.game.obstacles.forEach(o => {
+          if (o.row === this.selectedPawn.row && o.column === this.selectedPawn.column) nextAvailable = false
+        })
+        return nextAvailable
+      }
+      return false
     },
     playing: function () {
       let playing = false
@@ -117,7 +144,6 @@ export default {
     movePawn(row, column) {
       this.socket.emit(websocketEvents.MOVE_PAWN, {row: row, column: column})
       this.selectNewPawn({row: null, column: null})
-
     },
     moveObstacle(row, column) {
       this.socket.emit(
@@ -162,6 +188,29 @@ export default {
         }
       }
       return b
+    },
+    generateFinishBlocks(){
+      let fBlocks = []
+      for (let i=0; i< this.game.settings.columns; i++){
+        let shapes = []
+        let colors = []
+        this.game.players.forEach(player => {
+          if (player.row === -1 && player.column === i){
+            shapes.push(player.shape)
+            colors.push(player.color)
+          }
+        })
+        fBlocks.push({
+          shapes,
+          colors,
+          column: i
+        })
+      }
+      console.log(fBlocks)
+      return fBlocks
+    },
+    finish(row, column){
+      this.movePawn(-1, column)
     }
   },
   mounted() {
@@ -170,6 +219,7 @@ export default {
       this.setSize()
     })
     this.blocks = this.generateBlocks()
+    this.finishBlocks = this.generateFinishBlocks()
     this.socket.on(websocketEvents.MOVE_PAWN, () => {
       this.blocks = this.generateBlocks()
     })

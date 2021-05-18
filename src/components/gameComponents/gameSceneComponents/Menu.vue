@@ -48,6 +48,8 @@ export default {
     width: 100%;
     position: relative;
     height: 50%;
+    border-left: none;
+    border-top: 5px solid black;
   }
   h1{
     color: black;
