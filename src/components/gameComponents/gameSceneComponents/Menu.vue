@@ -36,6 +36,7 @@ export default {
   },
   methods: {
     earthquake: function() {
+      console.log("called earthquake")
       this.socket.emit(websocketEvents.EARTHQUAKE, "")
     }
   }
