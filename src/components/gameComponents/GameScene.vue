@@ -1,8 +1,7 @@
 <template>
 <div class="game_scene_wrapper">
   <div class="enter_full_screen" @click="changeFullScreen">
-    <img src="@/assets/fullScreen.png" alt="" v-if="!fullScreen">
-    <img src="@/assets/exitFullScreen.png" alt="" v-if="fullScreen">
+    <img src="@/assets/fullScreen.png" alt="">
   </div>
   <GameBoard v-if="socket" :game="game" :socket="socket"></GameBoard>
   <Menu :game="game" :socket="socket"></Menu>
@@ -15,25 +14,15 @@ import GameBoard from "./gameSceneComponents/GameBoard";
 export default {
   name: "GameScene",
   components: {GameBoard, Menu},
-  data(){
-    return {
-      fullScreen: false
-    }
-  },
+  data(){},
   props: {
     game: Object,
     socket: Object
   },
   methods: {
     changeFullScreen: function (){
-      if (!this.fullScreen){
-        let el = document.getElementById("board-container")
-        console.log(el)
-        el.requestFullscreen()
-      }else{
-        document.exitFullscreen()
-      }
-      this.fullScreen = !this.fullScreen
+      let el = document.getElementById("board-container")
+      el.requestFullscreen()
     }
   }
 }
@@ -43,6 +32,7 @@ export default {
 .game_scene_wrapper{
   height: 100%;
   background-color: white;
+  scroll-behavior: unset;
   .enter_full_screen{
     height: 40px;
     width: 40px;

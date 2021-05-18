@@ -64,6 +64,8 @@ export default {
     height: 50%;
     border-left: none;
     border-top: 5px solid black;
+    background-color: #75fcf5;
+    margin: 0;
   }
   h1{
     color: black;

@@ -168,10 +168,11 @@ export default {
   }
 
   &.finish{
-    background-color: orange;
-    border-color: orange;
+    background-color: white;
+    border: 1px solid white;
     &.available-pawn-move{
       background-color: red;
+      border-color: red;
     }
   }
 }

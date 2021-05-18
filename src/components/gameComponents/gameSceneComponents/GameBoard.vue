@@ -39,7 +39,7 @@ export default {
   }
   @media (max-width: 700px) {
     width: 100%;
-    height: 55%;
+    height: 50%;
     position: relative;
     margin: 0;
     .board_container{

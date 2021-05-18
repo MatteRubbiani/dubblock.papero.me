@@ -4,10 +4,6 @@
   <div class="pawn_wrapper" :class="{'offline': !online}">
     <img :src="imageUrl" alt="">
   </div>
-  <div class="username_wrapper">
-    <p v-if="!you">{{username}}</p>
-    <p v-if="you">You</p>
-  </div>
 </div>
 </template>
 
@@ -48,21 +44,6 @@ export default {
     &.offline{
       -webkit-filter: grayscale(100%);
       filter: grayscale(100%);
-    }
-  }
-  .username_wrapper{
-    display: none;
-    margin-left: 5px;
-  }
-
-  &:hover{
-    .username_wrapper{
-      display: flex;
-      height: fit-content;
-      margin: auto;
-    }
-    .pawn_wrapper{
-      display: none;
     }
   }
 }

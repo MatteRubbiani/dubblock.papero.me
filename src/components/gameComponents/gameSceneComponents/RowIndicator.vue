@@ -47,8 +47,8 @@ export default {
   },
   methods: {
     setSize: function (){
-      let blockHeight = document.getElementById("board-container").clientHeight / this.game.settings.rows
-      let blockWidth = document.getElementById("board-container").clientWidth / (this.game.settings.columns+1)
+      let blockHeight = document.getElementById("board-container").clientHeight / (this.game.settings.rows + 4)
+      let blockWidth = document.getElementById("board-container").clientWidth / (this.game.settings.columns + 1)
       this.blockSize = blockHeight > blockWidth ? parseInt(blockWidth) : parseInt(blockHeight)
     },
   },
@@ -68,7 +68,7 @@ export default {
   padding-left: 4%;
   grid-gap: 1px;
   @media (max-width: 700px) {
-    margin: 0 auto;
+    margin: 5% auto;
   }
 }
 </style>

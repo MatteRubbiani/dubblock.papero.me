@@ -91,7 +91,7 @@ const game = {
         },
         {
             row: 9,
-            column: 2
+            column: 1
         },
     ]
 

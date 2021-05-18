@@ -113,7 +113,7 @@ export default {
   },
   methods: {
     setSize: function () {
-      let blockHeight = document.getElementById("board-container").clientHeight / this.game.settings.rows
+      let blockHeight = document.getElementById("board-container").clientHeight / (this.game.settings.rows + 4)
       let blockWidth = document.getElementById("board-container").clientWidth / (this.game.settings.columns + 1)
       this.blockSize = blockHeight > blockWidth ? parseInt(blockWidth) : parseInt(blockHeight)
     },
@@ -218,7 +218,7 @@ export default {
     })
     this.blocks = this.generateBlocks()
     this.finishBlocks = this.generateFinishBlocks()
-    this.socket.on(websocketEvents.MOVE_PAWN, () => {
+    /*this.socket.on(websocketEvents.MOVE_PAWN, () => {
       this.blocks = this.generateBlocks()
       this.finishBlocks = this.generateFinishBlocks()
     })
@@ -232,7 +232,7 @@ export default {
     this.socket.on(websocketEvents.EARTHQUAKE, () => {
       this.blocks = this.generateBlocks()
       //avvisa in qualche modo che è stato fatto terremoto
-    })
+    })*/
   }
 }
 </script>
