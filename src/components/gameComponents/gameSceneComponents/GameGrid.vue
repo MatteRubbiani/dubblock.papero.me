@@ -229,6 +229,10 @@ export default {
       console.log("my turnnnn")
       this.selectMyPawn()
     })
+    this.socket.on(websocketEvents.EARTHQUAKE, () => {
+      this.blocks = this.generateBlocks()
+      //avvisa in qualche modo che è stato fatto terremoto
+    })
   }
 }
 </script>
