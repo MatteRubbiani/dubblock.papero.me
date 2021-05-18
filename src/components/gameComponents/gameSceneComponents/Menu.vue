@@ -8,7 +8,7 @@
                    :color="playingPlayer.color"
                    :online="playingPlayer.online"
                    :you="playingPlayer.localId === game.localId"></PlayingPlayer>
-    <button class="revelation_button" v-if="playingPlayer.localId === game.localId">Reveal</button>
+    <button class="revelation_button" v-if="playingPlayer.localId === game.localId" @click="revelation">Reveal</button>
     <button class="earthquake_button" v-if="playingPlayer.localId === game.localId" @click="earthquake">Earthquake</button>
 
   </div>
@@ -36,8 +36,10 @@ export default {
   },
   methods: {
     earthquake: function() {
-      console.log("called earthquake")
       this.socket.emit(websocketEvents.EARTHQUAKE, "")
+    },
+    revelation: function (){
+      this.socket.emit(websocketEvents.REVELATION, "")
     }
   }
 }
