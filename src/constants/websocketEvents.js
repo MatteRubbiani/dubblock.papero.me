@@ -10,5 +10,7 @@ export default {
     GAME_MODIFIED: "game-modified",
     MOVE_PAWN: "move-pawn",
     MOVE_BLOCK: "move-block",
-    YOUR_TURN: "your_turn"
+    YOUR_TURN: "your_turn",
+    EARTHQUAKE: "earthquake",
+    REVELATION: "revelation"
 }

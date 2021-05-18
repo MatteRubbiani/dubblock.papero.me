@@ -5,7 +5,7 @@
     <img src="@/assets/exitFullScreen.png" alt="" v-if="fullScreen">
   </div>
   <GameBoard v-if="socket" :game="game" :socket="socket"></GameBoard>
-  <Menu :game="game"></Menu>
+  <Menu :game="game" :socket="socket"></Menu>
 </div>
 </template>
 

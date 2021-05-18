@@ -9,7 +9,7 @@
                    :online="playingPlayer.online"
                    :you="playingPlayer.localId === game.localId"></PlayingPlayer>
     <button class="revelation_button" v-if="playingPlayer.localId === game.localId">Reveal</button>
-    <button class="earthquake_button" v-if="playingPlayer.localId === game.localId">Earthquake</button>
+    <button class="earthquake_button" v-if="playingPlayer.localId === game.localId" @click="earthquake">Earthquake</button>
 
   </div>
 </template>
@@ -17,12 +17,14 @@
 <script>
 import Players from "../gameSceneComponents/MenuComponents/Players";
 import PlayingPlayer from "./MenuComponents/PlayingPlayer";
+import websocketEvents from "../../../constants/websocketEvents";
 
 export default {
   name: "Menu",
   components: {PlayingPlayer, Players},
   props: {
-    game: Object
+    game: Object,
+    socket: Object
   },
   computed: {
     playingPlayer: function () {
@@ -30,6 +32,11 @@ export default {
         if (this.game.players[i].playing) return this.game.players[i]
       }
       return null
+    }
+  },
+  methods: {
+    earthquake: function() {
+      this.socket.emit(websocketEvents.EARTHQUAKE, "")
     }
   }
 }
