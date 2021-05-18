@@ -218,7 +218,7 @@ export default {
     })
     this.blocks = this.generateBlocks()
     this.finishBlocks = this.generateFinishBlocks()
-    /*this.socket.on(websocketEvents.MOVE_PAWN, () => {
+    this.socket.on(websocketEvents.MOVE_PAWN, () => {
       this.blocks = this.generateBlocks()
       this.finishBlocks = this.generateFinishBlocks()
     })
@@ -232,7 +232,7 @@ export default {
     this.socket.on(websocketEvents.EARTHQUAKE, () => {
       this.blocks = this.generateBlocks()
       //avvisa in qualche modo che è stato fatto terremoto
-    })*/
+    })
   }
 }
 </script>
