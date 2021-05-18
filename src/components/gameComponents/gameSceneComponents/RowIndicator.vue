@@ -67,5 +67,8 @@ export default {
   margin: auto;
   padding-left: 4%;
   grid-gap: 1px;
+  @media (max-width: 700px) {
+    margin: 0 auto;
+  }
 }
 </style>
