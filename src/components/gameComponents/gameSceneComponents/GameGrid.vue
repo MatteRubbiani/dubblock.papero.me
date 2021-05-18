@@ -125,14 +125,12 @@ export default {
       this.selectedPawn.column = pawn[1]
     },
     selectMyPawn() {
-      let pawn = {row: null, column: null}
       this.game.players.forEach(p => {
-        if (p.localId === this.game.localId) {
+        if (p.localId === this.game.localId && p.row !== -1) {
           this.selectedPawn.row = p.row
           this.selectedPawn.column = p.column
         }
       })
-      console.log("my pawn : ",pawn)
     },
     selectNewObstacle(obstacle) {
       this.selectedPawn.row = null;
