@@ -8,8 +8,12 @@
                    :color="playingPlayer.color"
                    :online="playingPlayer.online"
                    :you="playingPlayer.localId === game.localId"></PlayingPlayer>
-    <button class="revelation_button" v-if="playingPlayer.localId === game.localId" @click="revelation">Reveal</button>
-    <button class="earthquake_button" v-if="playingPlayer.localId === game.localId" @click="earthquake">Earthquake</button>
+    <button class="revelation_button"
+            v-if="playingPlayer.localId === game.localId && game.settings.revelation < 2"
+            @click="revelation">Reveal</button>
+    <button class="earthquake_button"
+            v-if="playingPlayer.localId === game.localId && game.settings.earthquake < 1"
+            @click="earthquake">Earthquake</button>
 
   </div>
 </template>
