@@ -28,6 +28,10 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
+  background-image: url("../../../assets/grass_background.png");
+  background-size: 40px;
+  background-repeat: repeat;
+  background-position: bottom;
 
   .board_container {
     width: 40%;
@@ -35,7 +39,10 @@ export default {
     margin: 10% auto;
     display: flex;
     flex-flow: row;
-    background-color: white;
+    background-image: url("../../../assets/grass_background.png");
+    background-size: 40px;
+    background-repeat: repeat;
+    background-position: bottom;
   }
   @media (max-width: 700px) {
     width: 100%;

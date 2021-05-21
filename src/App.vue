@@ -15,14 +15,18 @@ html{
   overflow-x: hidden;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: green;
+  scroll-behavior: smooth;
 }
 
 body{
   margin: 0;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: green;
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
 }
 
 h1{

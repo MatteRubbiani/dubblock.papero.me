@@ -3,7 +3,7 @@
                    :src="require('@/assets/hamburger_icon_dark.png')"
                    @toggle-show="showHamburgerMenu=$event"/>
   <Lobby v-if="socket  && status === 0" :gameId="gameId" :socket="socket" :game="game"></Lobby>
-  <GameScene  v-if="socket  && status === 1" :game="game" :socket="socket"></GameScene>
+  <GameScene  v-if="socket  && status === 1" :game="game" :socket="socket" ></GameScene>
   <Loading v-if="!socket || status === null"></Loading>
 </template>
 
@@ -26,7 +26,13 @@ export default {
       showHamburgerMenu: false,
       game: null,
       status: null //TODO: change
-    }
+    }/*
+    return {
+      socket: 1,
+      showHamburgerMenu: false,
+      game: game,
+      status: 1 //TODO: change
+    }*/
   },
   computed: {
     gameId: function (){

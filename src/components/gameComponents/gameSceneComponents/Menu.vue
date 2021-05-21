@@ -1,5 +1,5 @@
 <template>
-  <div class="menu_wrapper">
+  <div class="menu_wrapper" id="menu">
     <h2>DUBBLOCK</h2>
     <Players :players="game.players" :localId="game.localId"></Players>
     <PlayingPlayer v-if="playingPlayer"
@@ -64,8 +64,9 @@ export default {
     height: 50%;
     border-left: none;
     border-top: 5px solid black;
-    background-color: #75fcf5;
+    background-color: white;
     margin: 0;
+    z-index: 1;
   }
   h1{
     color: black;

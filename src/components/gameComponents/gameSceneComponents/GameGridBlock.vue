@@ -112,9 +112,13 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
+  //border: 1px solid black;
   //border-left: 1px solid black;
   //border-right: 1px solid black;
+  background-image: url("../../../assets/grass_background.png");
+  background-size: 40px;
+  background-repeat: repeat;
+  background-position: bottom;
   .move-pawn-here_wrapper{
     width: 100%;
     height: 80%;
@@ -127,7 +131,6 @@ export default {
     display: grid;
 
     &.selected {
-      //border: 1px solid red;
     }
   }
 
@@ -144,7 +147,7 @@ export default {
   }
 
   &.available-pawn-move {
-    background-color: yellow;
+    border: 2px solid yellow;
 
     .pawn_wrapper {
       opacity: .2;
@@ -169,7 +172,10 @@ export default {
 
   &.finish{
     background-color: white;
-    border: 1px solid white;
+    background-image: url("../../../assets/arrival.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
     &.available-pawn-move{
       background-color: red;
       border-color: red;

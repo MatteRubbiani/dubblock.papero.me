@@ -243,7 +243,7 @@ export default {
   margin: auto;
   user-select: none;
   //grid-column-gap: 1px;
-  grid-gap: 1px;
+  //grid-gap: 1px;
   @media (max-width: 700px) {
     margin: 5% auto;
   }
