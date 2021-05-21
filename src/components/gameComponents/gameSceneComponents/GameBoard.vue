@@ -43,6 +43,7 @@ export default {
     background-size: 40px;
     background-repeat: repeat;
     background-position: bottom;
+    border: 3px dotted saddlebrown;
   }
   @media (max-width: 700px) {
     width: 100%;

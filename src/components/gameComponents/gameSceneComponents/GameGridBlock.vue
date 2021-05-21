@@ -115,7 +115,7 @@ export default {
   //border: 1px solid black;
   //border-left: 1px solid black;
   //border-right: 1px solid black;
-  background-image: url("../../../assets/grass_background.png");
+  //background-image: url("../../../assets/grass_background.png");
   background-size: 40px;
   background-repeat: repeat;
   background-position: bottom;
@@ -144,11 +144,14 @@ export default {
     img {
       width: 100%;
     }
+    &.selected{
+      transform: scale(.8);
+    }
   }
 
   &.available-pawn-move {
-    border: 2px solid yellow;
-
+    background-image: none;
+    border: 1px solid red;
     .pawn_wrapper {
       opacity: .2;
     }
@@ -177,8 +180,7 @@ export default {
     background-repeat: no-repeat;
     background-position: bottom;
     &.available-pawn-move{
-      background-color: red;
-      border-color: red;
+      border-color: yellow;
     }
   }
 }

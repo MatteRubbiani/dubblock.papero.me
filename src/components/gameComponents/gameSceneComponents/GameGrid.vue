@@ -123,6 +123,7 @@ export default {
       if (!this.playing || pawn[0] === -1) return null
       this.selectedPawn.row = pawn[0];
       this.selectedPawn.column = pawn[1]
+      this.blocks = this.generateBlocks()
     },
     selectMyPawn() {
       this.game.players.forEach(p => {
@@ -138,6 +139,7 @@ export default {
       if (!this.playing) return null
       this.selectedObstacle.row = obstacle[0];
       this.selectedObstacle.column = obstacle[1]
+      this.blocks = this.generateBlocks()
     },
     movePawn(row, column) {
       this.socket.emit(websocketEvents.MOVE_PAWN, {row: row, column: column})
@@ -243,7 +245,7 @@ export default {
   margin: auto;
   user-select: none;
   //grid-column-gap: 1px;
-  //grid-gap: 1px;
+  grid-gap: 2px;
   @media (max-width: 700px) {
     margin: 5% auto;
   }
