@@ -105,7 +105,7 @@ export default {
   }
 
   .lobby-header_wrapper {
-    width: 80%;
+    width: 50%;
     margin: auto;
     max-width: 1000px;
     img{
