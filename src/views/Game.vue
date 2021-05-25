@@ -17,6 +17,9 @@ import GameScene from "../components/gameComponents/GameScene";
 import {urls} from "../constants/constants";
 import websocketEvents from "../constants/websocketEvents";
 import Loading from "../components/Loading";
+import axios from "axios";
+import store from "../store";
+
 export default {
   name: "Game",
   components: {Loading, GameScene, Lobby, UserHamburgerMenu},
@@ -60,7 +63,44 @@ export default {
       console.log(data)
       this.status = data.status
     })
-  }
+  },
+  beforeRouteEnter(to, from, next){
+    //next();
+    const createLocalAccount = ()=>{
+      axios
+          .get(urls.createLocalAccountUrl)
+          .then((response) => {
+            store.dispatch("setUsername", response.data.username);
+            store.dispatch("setLogged", false);
+            next();
+          })
+          .catch(() => {
+            location.href = location.origin+"/error?from="+location.pathname;
+          });
+    }
+    if(store.state.username === "" && store.state.logged === -1) { //se non è ancora stato trovato il logged
+      axios
+          .get(urls.getLoginInfoUrl)
+          .then((response) => {
+            if (response.data) { //se è loggato in qualche modo
+              store.dispatch("setLogged", response.data.google_signed_in);
+              store.dispatch("setUsername", decodeURIComponent(response.data.username));
+
+              next(); //se è loggato in qualche modo può andare dove vuole
+
+            } else { //se non è loggato
+              createLocalAccount();
+            }
+          })
+          .catch(() => {
+            location.href = location.origin+"/error?from="+location.pathname;
+          });
+    } else {
+      if(store.state.username === null){ //se non è loggato
+        createLocalAccount();
+      } else next(); //se è loggato
+    }
+  },
 }
 </script>
 
