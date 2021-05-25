@@ -247,7 +247,7 @@ export default {
   //grid-column-gap: 1px;
   //grid-gap: 2px;
   @media (max-width: 700px) {
-    margin: 5% auto;
+    margin: 10% auto;
   }
 }
 </style>
