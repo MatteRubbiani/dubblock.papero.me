@@ -148,7 +148,6 @@ export default {
 
   &.available-pawn-move {
     background-image: url("../../../assets/grass_background_selected.png");
-    border: 1px solid red;
     .pawn_wrapper {
       opacity: .2;
     }
