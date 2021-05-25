@@ -166,6 +166,7 @@ export default {
     position: absolute;
     bottom: 2%;
     height: fit-content;
+    background-color:  #87ceeb;
 
     button {
       width: 30%;
