@@ -147,7 +147,6 @@ export default {
   }
 
   &.available-pawn-move {
-    background-image: none;
     border: 1px solid red;
     .pawn_wrapper {
       opacity: .2;
