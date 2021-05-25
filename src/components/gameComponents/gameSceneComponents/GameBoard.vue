@@ -45,10 +45,10 @@ export default {
     background-position: bottom;
   }
   @media (max-width: 700px) {
-    width: 100%;
+    width: 90%;
     height: 50%;
     position: relative;
-    margin: 0;
+    margin: 0 auto;
     .board_container{
       width: 100%;
       height: 100%;
