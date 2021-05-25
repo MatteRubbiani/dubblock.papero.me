@@ -26,8 +26,8 @@ export default {
       showHamburgerMenu: false,
       game: null,
       status: null //TODO: change
-    }/*
-    return {
+    }
+    /*return {
       socket: 1,
       showHamburgerMenu: false,
       game: game,

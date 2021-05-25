@@ -58,13 +58,13 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
+  background-color:  #87ceeb;
   @media (max-width: 700px) {
     width: 100%;
     position: relative;
     height: 50%;
     border-left: none;
     border-top: 5px solid black;
-    background-color: white;
     margin: 0;
     z-index: 1;
   }

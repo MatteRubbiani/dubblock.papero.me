@@ -4,7 +4,7 @@
     <img src="@/assets/fullScreen.png" alt="" v-if="!fullScreen">
     <img src="@/assets/exitFullScreen.png" alt="" v-if="fullScreen">
   </div>
-  <div class="lobby-header_wrapper">Dubblock</div>
+  <div class="lobby-header_wrapper"><img src="@/assets/title.png" alt=""></div>
   <div class="settings_wrapper">
     <p class="difficulty_text">Difficulty: </p>
     <div class="difficulty-setting_wrapper">
@@ -67,8 +67,7 @@ export default {
       this.socket.emit(websocketEvents.START_GAME)
     },
     changeDifficulty: function (quantity){
-    this.game.settings.difficulty += quantity
-      this.socket.emit(websocketEvents.CHANGE_DIFFICULTY, (this.game.settings.difficulty))
+      this.socket.emit(websocketEvents.CHANGE_DIFFICULTY, (this.game.settings.difficulty + quantity))
     },
     changeFullScreen: function (){
       if (!this.fullScreen){
@@ -90,7 +89,7 @@ export default {
   max-width: 1500px;
   height: 100%;
   overflow: hidden;
-  background-color: white;
+  background-color:  #87ceeb;
   position: relative;
 
   .enter_full_screen{
@@ -106,7 +105,15 @@ export default {
   }
 
   .lobby-header_wrapper {
-    font-size: 400%;
+    width: 80%;
+    margin: auto;
+    max-width: 1000px;
+    img{
+      width: 100%;
+    }
+    @media (max-width: 700px) {
+      width: 70%;
+    }
   }
 
   .settings_wrapper {
@@ -159,7 +166,6 @@ export default {
     position: absolute;
     bottom: 2%;
     height: fit-content;
-    background-color: white;
 
     button {
       width: 30%;

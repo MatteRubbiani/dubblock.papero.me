@@ -245,7 +245,7 @@ export default {
   margin: auto;
   user-select: none;
   //grid-column-gap: 1px;
-  grid-gap: 2px;
+  //grid-gap: 2px;
   @media (max-width: 700px) {
     margin: 5% auto;
   }

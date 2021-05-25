@@ -15,7 +15,7 @@ html{
   overflow-x: hidden;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: #87ceeb;
   scroll-behavior: smooth;
 }
 
@@ -23,7 +23,7 @@ body{
   margin: 0;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color:  #87ceeb;
   overflow-x: hidden;
 
   scroll-behavior: smooth;

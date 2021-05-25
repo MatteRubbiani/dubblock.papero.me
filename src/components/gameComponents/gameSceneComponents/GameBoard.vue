@@ -28,18 +28,18 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url("../../../assets/grass_background.png");
+  //background-image: url("../../../assets/grass_background.png");
   background-size: 40px;
   background-repeat: repeat;
   background-position: bottom;
 
   .board_container {
-    width: 40%;
-    height: 70%;
-    margin: 10% auto;
+    width: 50%;
+    height: 100%;
+    margin: auto;
     display: flex;
     flex-flow: row;
-    background-image: url("../../../assets/grass_background.png");
+    //background-image: url("../../../assets/grass_background.png");
     background-size: 40px;
     background-repeat: repeat;
     background-position: bottom;
