@@ -8,9 +8,9 @@
   <div class="settings_wrapper">
     <p class="difficulty_text">Difficulty: </p>
     <div class="difficulty-setting_wrapper">
-      <img src="@/assets/upArrow.png" alt="" v-if="isAdmin" @click="changeDifficulty(-1)">
+      <img src="@/assets/upArrow.png" alt="" v-if="isAdmin && this.game.settings.difficulty > 0" @click="changeDifficulty(-1)">
       <div class="difficulty-level">{{game.settings.difficulty}}</div>
-      <img src="@/assets/downArrow.png" alt="" v-if="isAdmin" @click="changeDifficulty(1)">
+      <img src="@/assets/downArrow.png" alt="" v-if="isAdmin && this.game.settings.difficulty < 6" @click="changeDifficulty(1)">
     </div>
   </div>
 
