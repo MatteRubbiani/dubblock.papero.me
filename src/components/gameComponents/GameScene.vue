@@ -51,7 +51,7 @@ export default {
     width: 40px;
     position: absolute;
     cursor: pointer;
-    top: 15px;
+    bottom: 15px;
     right: 15px;
     z-index: 7;
 

@@ -1,6 +1,6 @@
 <template>
   <div class="menu_wrapper" id="menu">
-    <h2>DUBBLOCK</h2>
+    <div class="title_wrapper"><img src="@/assets/title.png" alt=""></div>
     <Players :players="game.players" :localId="game.localId"></Players>
     <PlayingPlayer v-if="playingPlayer"
                    :username="playingPlayer.username"
@@ -68,8 +68,12 @@ export default {
     margin: 0;
     z-index: 1;
   }
-  h1{
-    color: black;
+  .title_wrapper{
+    width: 80%;
+    margin: 5% auto;
+    img{
+      width: 100%;
+    }
   }
   button{
     width: 80%;

@@ -5,7 +5,7 @@
                        @toggle-show="showHamburgerMenu=$event"/>
     <div class="home-header_wrapper">
       <div class="home-header-title_wrapper">
-        Dubblock
+        <img src="@/assets/title.png" alt="">
       </div>
     </div>
 
@@ -82,8 +82,15 @@ export default {
 .home_wrapper {
   .home-header_wrapper {
     .home-header-title_wrapper {
-      font-size: 300%;
-      margin-top: 20px;
+      margin: 20px auto;
+      width: 50%;
+      max-width: 1000px;
+      img{
+        width: 100%;
+      }
+      @media (max-width: 700px) {
+        width: 75%;
+      }
     }
   }
 
