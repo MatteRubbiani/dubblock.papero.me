@@ -71,7 +71,7 @@ export default {
             }
           })
           .catch(() => {
-            location.href = location.origin + "/error?from=" + location.pathname;
+            //location.href = location.origin + "/error?from=" + location.pathname;
           });
     } else next();
   }
